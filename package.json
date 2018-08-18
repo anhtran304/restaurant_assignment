@@ -4,7 +4,7 @@
   "description": "Asian restaurant assignment 1",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass sass/main.scss css/style.css -w"
+    "sass": "node-sass sass/main.scss styles/style.css -w"
   },
   "author": "Anh Tran",
   "license": "ISC",

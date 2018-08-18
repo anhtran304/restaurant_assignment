@@ -1,0 +1,196 @@
+@keyframes spin {
+  100% {
+    -webkit-transform: rotateY(-360deg);
+    transform: rotateY(-360deg); } }
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7; }
+
+nav {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 700; }
+  nav a:link, nav a:visited {
+    color: #fff;
+    text-decoration: none; }
+  nav a:active, nav a:hover {
+    color: #ffd000; }
+
+footer {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  font-weight: 400; }
+  footer a:link, footer a:visited {
+    color: #fff;
+    text-decoration: none; }
+  footer a:active, footer a:hover {
+    color: #ffd000; }
+
+.heading-primary {
+  color: #1e2228;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 8rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
+
+.heading-secondary {
+  font-size: 3.0rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .2rem; }
+
+.u-text-center {
+  text-align: center; }
+
+.u-margin-bottom-8 {
+  margin-bottom: 8rem; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+
+::after {
+  content: "";
+  display: table;
+  clear: both; }
+
+[class^="col-"] {
+  float: left; }
+  [class^="col-"]:not(:last-child) {
+    margin-right: 6rem; }
+
+.col-1-of-2 {
+  width: calc((100% - 6rem) / 2); }
+
+.col-1-of-3 {
+  width: calc((100% - 2 * 6rem) / 3); }
+
+.col-2-of-3 {
+  width: calc(2 * (100% - 2 * 6rem) / 3  + 6rem); }
+
+.col-1-of-4 {
+  width: calc((100% - 3 * 6rem) / 4); }
+
+.col-2-of-4 {
+  width: calc(2 * (100% - 3 * 6rem) / 4  + 6rem); }
+
+.col-3-of-4 {
+  width: calc(3 * (100% - 3 * 6rem) / 4  + 2 * 6rem); }
+
+.header {
+  height: 12rem;
+  background-color: #262626;
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 3rem;
+    left: 15rem; }
+    .header__logo-box :hover {
+      animation: spin 1.6s ease-in-out; }
+  .header__logo {
+    height: 5rem; }
+
+nav {
+  position: absolute;
+  top: 4.5rem;
+  right: 15rem; }
+  nav ul {
+    list-style: none; }
+    nav ul li {
+      float: left; }
+      nav ul li a {
+        display: block;
+        padding: 8px; }
+
+.footer {
+  height: 12rem;
+  padding: 3rem;
+  color: #fff;
+  background-color: #1e2228; }
+  .footer__copyright {
+    padding-right: 1.5rem; }
+
+.article {
+  background-color: #f7f7f7; }
+  .article__top {
+    height: 65vh;
+    position: relative;
+    background-image: url(images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%); }
+    .article__top__heading-primary {
+      top: 40%;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center; }
+  .article__item {
+    height: 40rem;
+    max-width: 98rem;
+    margin: 0 auto;
+    padding: 8rem 0; }
+    .article__item__title {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center; }
+    .article__item__box {
+      display: flex;
+      margin-top: 7rem; }
+
+.fas {
+  color: #ffe570;
+  margin-bottom: 2rem; }

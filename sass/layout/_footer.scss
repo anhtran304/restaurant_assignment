@@ -1,0 +1,10 @@
+.footer {
+    height: 12rem;
+    padding: 3rem;
+    color: $color-white;
+    background-color: rgba($color-black-light, 1);
+
+    &__copyright {
+        padding-right: 1.5rem;
+    }  
+}

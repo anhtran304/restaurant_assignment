@@ -1,0 +1,25 @@
+@mixin alink {
+    a:link, a:visited {
+        color: $color-white;
+        text-decoration: none;
+    }
+    
+    a:active, a:hover {
+        color: $color-primary;
+    }
+}
+
+@mixin blockcenter {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

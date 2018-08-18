@@ -6,35 +6,82 @@
     <meta name="keywords" content="HTML5, CSS, JavaScript" />
     <meta name="author" content="Anh Tran" />
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/>
     <link rel="stylesheet" href="styles/style.css"/>
-    <title>Pho - Take away | Index</title>
+    <title>Swap - Money Transfer | Index</title>
 </head>
 <body>
-    <nav>
-        <a href="index.xml">Home</a> |
-        <a href="product.xml">Products</a> |
-        <a href="enquire.xml">Enquire</a> |
-        <a href="Enhancements.xml">Enhancements</a> |
-        <a href="about.xml">About</a>
-    </nav>
+    <header class="header">
+        <div class="header__logo-box">
+            <img class="header__logo" src="images/logo.png" alt="Logo"/>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.xml">Home</a> </li>
+                <li><a href="product.xml">Products</a></li>
+                <li><a href="enquire.xml">Enquire</a></li>
+                <li><a href="Enhancements.xml">Enhancements</a></li>
+                <li><a href="about.xml">About</a></li>
+            </ul>
+        </nav>
+    </header>
     <!-- Finsih nav -->
-    <article class="article">
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, ipsum fuga! Ipsum neque sit nam totam nesciunt libero, eaque veritatis impedit amet. Fugit dolor sunt labore ipsam, minima quas laboriosam!
-        </p>
-    </article>
-    <!-- Finish article -->
+    <section>   
+        <article class="article__top">
+            <h1 class="article__top__heading-primary">
+                <span class="heading-primary--main">Swap</span>
+                <span class="heading-primary--sub">Cheap and Secure</span>
+            </h1>
+        </article>
+        <article class="article__item">
+            <div class="article__item__title u-margin-bottom-8">
+                <h2 class="heading-secondary">
+                    Why choose us
+                </h2>
+                <hr/>
+            </div>
+            <div class="article__item__box">
+                <div class="col-1-of-3">
+                    <p class="u-text-center"><i class="fas fa-rocket fa-4x"></i></p>
+                    <p>
+                        Sign up, verify your account and get transacting. Recipient typically gets the money in 1-2 business days.
+                    </p>
+                </div>
+                <div class="col-1-of-3">
+                    <p class="u-text-center"><i class="fas fa-chart-line fa-4x"></i></p>
+                    <p>
+                        We get you mid-market rates sourced directly from Reuters and add absolutely no margins! We charge a nominal fee.
+                    </p>
+                </div>
+                <div class="col-1-of-3">
+                    <p class="u-text-center"><i class="fas fa-lock fa-4x"></i></p>
+                    <p>
+                        Swap is brought to you by your bank or financial institution and backed by Australian Company, so you know that it’s super safe.
+                    </p>
+                </div>
+            </div>
+        </article>
+        <article class="article__item">
+            <div class="article__item__title u-margin-bottom-8">
+                <h2 class="heading-secondary">
+                    F-Q
+                </h2>
+                <hr/>
+            </div>
+        </article>
+        <!-- Finish section -->
+    </section>
+    <!-- Finish section -->
     <aside>
 
     </aside>
     <!-- Finish aside -->
-    <footer>
-        <hr/>
-        <p>&#169;
-            <a href="https://swinburne.edu.au">Swinburne University of Technology</a>
+    <footer class="footer u-text-center">
+        <p class="footer__markup">
+            <small><a href="mailto:tranmr@gmail.com">Mark up by: Anh Tran</a></small>
         </p>
-        <p>Mark up by:
-            <a href="mailto:tranmr@gmail.com">Anh Tran</a>
+        <p class="footer__copyright">
+            <small><a href="https://www.swinburne.edu.au">&#169; Swinburne University of Technology</a></small>
         </p>
     </footer>
     <!-- Finsih footer -->
