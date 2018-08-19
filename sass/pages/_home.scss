@@ -17,10 +17,9 @@
     }
 
     &__item {
-        height: 40rem;
         max-width: 98rem;
         margin: 0 auto;
-        padding: 8rem 0;
+        padding-top: 8rem;
 
         &__title {
             @include blockcenter;
@@ -40,5 +39,4 @@
 
 ul {
     margin-top: 50px;
-    margin-bottom: 100px;
 }

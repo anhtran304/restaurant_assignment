@@ -5,9 +5,26 @@
     <meta name="description" content="Demonstrates some basic HTML content elements" />
     <meta name="keywords" content="HTML5, CSS, JavaScript" />
     <meta name="author" content="Anh Tran" />
-    <title>Pho - Take away | Enhancements</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="styles/style.css"/>
+    <title>Swap - Money Transfer | Enhancements</title>
 </head>
 <body>
+    <header class="header">
+        <div class="header__logo-box">
+            <img class="header__logo" src="images/logo.png" alt="Logo"/>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.xml">Home</a> </li>
+                <li><a href="product.xml">Products</a></li>
+                <li><a href="enquire.xml">Enquire</a></li>
+                <li><a href="Enhancements.xml">Enhancements</a></li>
+                <li><a href="about.xml">About</a></li>
+            </ul>
+        </nav>
+    </header>
     
 </body>
 </html>

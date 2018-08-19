@@ -13,6 +13,13 @@ nav {
     @include alink;
 }
 
+fieldset {
+    ::placeholder {
+        font-size: 1.3rem;
+        font-weight: 300;
+    }
+}
+
 footer {
     text-transform: capitalize;
     font-size: 1.5rem;
@@ -48,8 +55,15 @@ footer {
 }
 
 .heading-secondary {
-    font-size: 3.0rem;
+    font-size: 3rem;
     text-transform: uppercase;
     font-weight: 700;
+    letter-spacing: .2rem;
+}
+
+.heading-thirst {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 400;
     letter-spacing: .2rem;
 }

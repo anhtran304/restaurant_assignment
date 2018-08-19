@@ -52,6 +52,10 @@ nav {
   nav a:active, nav a:hover {
     color: #ffd000; }
 
+fieldset ::placeholder {
+  font-size: 1.3rem;
+  font-weight: 300; }
+
 footer {
   text-transform: capitalize;
   font-size: 1.5rem;
@@ -83,16 +87,38 @@ footer {
     animation: moveInRight 1s ease-out; }
 
 .heading-secondary {
-  font-size: 3.0rem;
+  font-size: 3rem;
   text-transform: uppercase;
   font-weight: 700;
+  letter-spacing: .2rem; }
+
+.heading-thirst {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 400;
   letter-spacing: .2rem; }
 
 .u-text-center {
   text-align: center; }
 
+.u-margin-bottom-15 {
+  margin-bottom: 15rem; }
+
 .u-margin-bottom-8 {
   margin-bottom: 8rem; }
+
+.u-margin-bottom-4 {
+  margin-bottom: 4rem; }
+
+.btn {
+  border: none;
+  height: 4rem;
+  width: 20rem;
+  font-size: 2rem;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);
+  cursor: pointer; }
+  .btn__bold {
+    font-weight: bold; }
 
 .row {
   max-width: 114rem;
@@ -147,7 +173,8 @@ footer {
 
 nav {
   position: absolute;
-  right: 15rem; }
+  right: 15rem;
+  top: -1rem; }
   nav ul {
     list-style: none; }
     nav ul li {
@@ -157,7 +184,6 @@ nav {
         padding: 8px; }
 
 .footer {
-  height: 12rem;
   padding: 3rem;
   color: #fff;
   background-color: #1e2228; }
@@ -179,10 +205,9 @@ nav {
       transform: translate(-50%, -50%);
       text-align: center; }
   .article__item {
-    height: 40rem;
     max-width: 98rem;
     margin: 0 auto;
-    padding: 8rem 0; }
+    padding-top: 8rem; }
     .article__item__title {
       position: absolute;
       left: 50%;
@@ -197,9 +222,33 @@ nav {
   margin-bottom: 2rem; }
 
 ul {
-  margin-top: 50px;
-  margin-bottom: 100px; }
+  margin-top: 50px; }
 
 .section__enquire {
-  border: 1px solid red;
-  margin: 200px; }
+  margin: 0 auto;
+  margin-top: 20vh;
+  max-width: 70%; }
+  .section__enquire__select {
+    align-items: center; }
+
+fieldset span {
+  display: flex;
+  margin: 3rem;
+  margin-left: 2rem; }
+
+fieldset label {
+  width: 15%; }
+
+fieldset input, fieldset textarea {
+  width: 30%; }
+
+fieldset #comments {
+  height: 8rem; }
+
+fieldset input[type="radio"] {
+  margin-right: -1rem;
+  width: 25%;
+  vertical-align: baseline; }
+
+input[type="submit"] {
+  margin-right: 2rem; }
