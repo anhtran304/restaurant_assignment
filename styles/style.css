@@ -131,7 +131,11 @@ footer {
 .header {
   height: 12rem;
   background-color: #262626;
-  position: relative; }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1; }
   .header__logo-box {
     position: absolute;
     top: 3rem;
@@ -158,21 +162,19 @@ nav {
   padding: 3rem;
   color: #fff;
   background-color: #1e2228; }
-  .footer__copyright {
-    padding-right: 1.5rem; }
 
 .article {
   background-color: #f7f7f7; }
   .article__top {
-    height: 65vh;
+    height: 80vh;
     position: relative;
     background-image: url(images/background.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
-    clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%); }
+    clip-path: polygon(0 0, 100% 0, 100% 70vh, 0 100%); }
     .article__top__heading-primary {
-      top: 40%;
+      top: 55%;
       position: absolute;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -194,3 +196,6 @@ nav {
 .fas {
   color: #ffe570;
   margin-bottom: 2rem; }
+
+.test {
+  display: block; }

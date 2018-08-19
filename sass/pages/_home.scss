@@ -2,16 +2,16 @@
     background-color: $color-grey;
 
     &__top {
-        height: 65vh;
+        height: 80vh;
         position: relative;
         background-image: url(images/background.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: top;
-        clip-path: polygon(0 0, 100% 0, 100% 50vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 70vh, 0 100%);
 
         &__heading-primary {
-            top: 40%;
+            top: 55%;
             @include blockcenter;
         }
     }
@@ -36,4 +36,8 @@
 .fas {
     color: $color-primary-light;
     margin-bottom: 2rem;
+}
+
+.test {
+    display: block;
 }

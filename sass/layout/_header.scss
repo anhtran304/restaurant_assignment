@@ -1,7 +1,11 @@
 .header {
     height: 12rem;
     background-color: rgba($color-black, 1);
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 
     &__logo-box {
         position: absolute;
