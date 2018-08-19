@@ -147,7 +147,6 @@ footer {
 
 nav {
   position: absolute;
-  top: 4.5rem;
   right: 15rem; }
   nav ul {
     list-style: none; }
@@ -197,5 +196,6 @@ nav {
   color: #ffe570;
   margin-bottom: 2rem; }
 
-.test {
-  display: block; }
+ul {
+  margin-top: 50px;
+  margin-bottom: 100px; }
