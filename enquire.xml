@@ -5,9 +5,132 @@
     <meta name="description" content="Demonstrates some basic HTML content elements" />
     <meta name="keywords" content="HTML5, CSS, JavaScript" />
     <meta name="author" content="Anh Tran" />
-    <title>Pho - Take away | Enquire</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="styles/style.css"/>
+    <title>Swap - Money Transfer | Enquire</title>
 </head>
 <body>
-    
+    <header class="header">
+        <div class="header__logo-box">
+            <img class="header__logo" src="images/logo.png" alt="Logo"/>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.xml">Home</a> </li>
+                <li><a href="product.xml">Products</a></li>
+                <li><a href="enquire.xml">Enquire</a></li>
+                <li><a href="Enhancements.xml">Enhancements</a></li>
+                <li><a href="about.xml">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Finsih header -->
+    <section class="section__enquire">
+        <div class="u-text-center u-margin-bottom-8">
+            <h2 class="heading-secondary">
+                Enquire
+            </h2>
+            <hr/>
+        </div>
+        <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
+        <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
+        <fieldset>
+            <legend>Your details</legend>
+            <p>
+                <label for="firstname">First Name</label> 
+                <input type="text" name= "firstname" id="firstname" maxlength="25" pattern="^[a-zA-Z]+$" required="required"/>
+            </p>
+            <p>
+                <label for="lastname">Last Name</label> 
+                <input type="text" name= "lastname" id="lastname" maxlength="25" pattern="^[a-zA-Z]+$" required="required"/>
+            </p>
+            <p>
+                <label for="email">Email</label> 
+                <input type="email" name= "email" id="email" required="required"/>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Your address</legend>
+            <p>
+                <label for="street">Street</label> 
+                <input type="text" name= "street" id="street" maxlength="40"/>
+            </p>
+            <p>
+                <label for="suburb">Suburb</label> 
+                <input type="text" name= "suburb" id="suburb" maxlength="20"/>
+            </p>
+            <p>
+                <label for="state">State</label>
+                <select name="state" id="state" required="required">
+                    <option value="">Please Select</option>
+                    <option value="nsw">NSW</option>
+                    <option value="vic">VIC</option>
+                    <option value="atc">ATC</option>
+                    <option value="qld">QLD</option>
+                    <option value="sa">SA</option>
+                    <option value="wa">WA</option>
+                    <option value="nt">NT</option>
+                    <option value="tas">TAS</option>
+                </select>
+            </p>
+            <p>
+                <label for="postcode">Postcode</label> 
+                <input type="text" name= "postcode" id="postcode" pattern="^[0-9]{4}$"/>
+            </p>
+            <p>
+                <input type="radio" id="callback" name="contactback" value="callback" required="required" />
+                <label for="callback">Call you back</label> 
+                <input type="radio" id="emailback" name="contactback" value="emailback"/>
+                <label for="emailback">Email you back</label>             
+            </p>
+            <p>
+                <label for="phone">Phone</label> 
+                <input type="text" name= "phone" id="phone" pattern="^[0-9]{10}$" placeholder="Your phone numbe"/>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Products</legend>
+            <p>
+                <label for="newcustomer">New customer</label>
+                <select name="newcustomer" id="newcustomer" required="required">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </p>
+            <p>
+                <label for="banktobank">Bank to Bank</label>
+                <input type="checkbox" name="products[]" value="banktobank" id="banktobank" checked="checked"/>
+            </p>
+            <p>
+                <label for="banktopickup">Bank to Pick up</label>
+                <input type="checkbox" name="products[]" value="banktopickup" id="banktopickup"/>
+            </p>
+            <p>
+                <label for="banktohome">Bank to Home</label>
+                <input type="checkbox" name="products[]" value="banktohome" id="banktohome"/>
+            </p>
+                <label for="comments">Comments:</label> 
+            <div>
+                <textarea placeholder="Your comments..." id="comments" name="comments" rows="6" cols="40"></textarea>
+            </div>
+        </fieldset>
+        <input type= "submit" value="Submit"/>
+        <input type= "reset" value="Reset Form"/>
+        <br/>
+        <br/>
+        </form>
+    </section>
+    <!-- Finish section -->
+    <footer class="footer u-text-center">
+        <p>
+            <small><a href="mailto:tranmr@gmail.com">Mark up by: Anh Tran</a></small>
+        </p>
+        <p>
+            <small><a href="https://www.swinburne.edu.au">&#169; Swinburne University of Technology</a></small>
+        </p>
+    </footer>
+    <!-- Finsih footer -->
+    <!-- Finsih footer -->
 </body>
 </html>

@@ -25,7 +25,7 @@
             </ul>
         </nav>
     </header>
-    <!-- Finsih nav -->
+    <!-- Finsih header -->
     <section>   
         <article class="article__top">
             <h1 class="article__top__heading-primary">
@@ -84,10 +84,6 @@
         <!-- Finish section -->
     </section>
     <!-- Finish section -->
-    <!-- <aside>
-
-    </aside> -->
-    <!-- Finish aside -->
     <footer class="footer u-text-center">
         <p>
             <small><a href="mailto:tranmr@gmail.com">Mark up by: Anh Tran</a></small>
