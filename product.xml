@@ -5,7 +5,7 @@
     <meta name="description" content="Demonstrates some basic HTML content elements" />
     <meta name="keywords" content="HTML5, CSS, JavaScript" />
     <meta name="author" content="Anh Tran" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans:100,300,400,700,900" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/>
     <link rel="stylesheet" href="styles/style.css"/>
     <title>Swap - Money Transfer | Products</title>
@@ -25,6 +25,105 @@
             </ul>
         </nav>
     </header>
-    
+    <!-- Finish header -->
+    <main class="main">
+        <div class="main__section">
+            <section class="u-margin-bottom-4">
+                <div class="main__section__title">
+                    <h1 class="heading-secondary heading-border u-margin-bottom-4">
+                        Products
+                    </h1>
+                </div>
+                <div class="display-flex">
+                    <div class="main__section__body">
+                        <h2 class="heading-third u-margin-left-20">
+                            Banking
+                        </h2>
+                        <ul class="u-margin-left-20">
+                            <li>Bank to Bank Deposit</li>
+                            <li>Bank to Pick Up</li>
+                            <li class="u-margin-bottom-2">Bank to Delivery Home</li>
+                        </ul>
+                        <h2 class="heading-third u-margin-left-20">
+                            Cash
+                        </h2>                    
+                        <ol class="u-margin-left-20">
+                            <li>Cash to Bank Deposit</li>
+                            <li>Cash to Pick Up</li>
+                            <li>Cash to Delivery Home</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <img class="u-margin-right-20" src="images/chart.png" width="200" alt=""/>
+                    </div>
+                </div>
+            </section>
+            <section class="u-margin-bottom-4">
+                <div class="main__section__title">
+                    <h1 class="heading-secondary heading-border u-margin-bottom-4">
+                        Fees
+                    </h1>
+                </div>
+                <div class="main__section__body">
+                    <table>
+                        <caption><h2 class="heading-third">Table of Transfer Fees</h2></caption>
+                        <thead>
+                            <tr>
+                            <!-- the scope attribute assists non-visual user agents -->
+                            <!-- rowspan and colspan allow multiple cells to be merged -->
+                            <th rowspan="2" scope="col">Country</th>
+                            <th colspan="3" scope="col">Fees</th>
+                            </tr>
+                            <tr>
+                            <th scope="col">&#60; $1,000</th>
+                            <th scope="col">$1,000 - $3,000</th>
+                            <th scope="col">&#62; $3,000</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <th scope="row">
+                            <img src="images/vnd.png" alt="Vietnam"/>Vietnam
+                        </th>
+                        <td>$6</td>
+                        <td>$13</td>
+                        <td>$80</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">
+                            <img src="images/inr.png" alt="India"/>India
+                        </th>
+                        <td>$4</td>
+                        <td>$10</td>
+                        <td>$50</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        <!-- Finish section -->
+        </div>
+        <aside class="main__aside">
+            <p class="u-margin-bottom-4 u-margin-top-4">
+                At Swap, we provide you Zero-Margin FX rates - mid-market rates sourced directly from Reuters, with absolutely no margins added! We also transparently display our remittance fee, and the exact amount that the recipient would receive.
+                Use Swap and start saving on international money transfers. With us, your money can now <strong>#domore</strong> You can also track your desired FX rates by subscribing to our FX alerts.
+            </p>
+            <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
+                <input  class="u-margin-bottom-2" type="email" name= "email" id="email" placeholder="Your email..." required="required"/>
+                <input class="btn btn__bold" type="submit" value="Subscribe"/>
+            </form>
+        </aside>
+        <!-- Finish aside -->
+    </main>
+    <!-- Finish main -->
+    <footer class="footer u-text-center">
+        <span>
+            <small><a href="mailto:tranmr@gmail.com">Mark up by: Anh Tran</a></small>
+        </span>
+        <span>
+            <small><a href="https://www.swinburne.edu.au">&#169; Swinburne University of Technology</a></small>
+        </span>
+    </footer>
+    <!-- Finsih footer -->
 </body>
 </html>

@@ -21,6 +21,10 @@
         margin: 0 auto;
         padding-top: 8rem;
 
+        ul {
+            margin-top: 50px;
+        }
+
         &__title {
             @include blockcenter;
         }
@@ -37,6 +41,4 @@
     margin-bottom: 2rem;
 }
 
-ul {
-    margin-top: 50px;
-}
+

@@ -5,7 +5,7 @@
     <meta name="description" content="Demonstrates some basic HTML content elements" />
     <meta name="keywords" content="HTML5, CSS, JavaScript" />
     <meta name="author" content="Anh Tran" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans:100,300,400,700,900" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/>
     <link rel="stylesheet" href="styles/style.css"/>
     <title>Swap - Money Transfer | Enquire</title>
@@ -28,15 +28,14 @@
     <!-- Finsih header -->
     <section class="section__enquire">
         <div class="u-text-center u-margin-bottom-4">
-            <h2 class="heading-secondary">
+            <h2 class="heading-secondary heading-border">
                 Enquire
             </h2>
-            <hr/>
         </div>
         <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
         <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
         <fieldset class="u-margin-bottom-4">
-            <legend class="heading-thirst">Your details</legend>
+            <legend class="heading-third">Your details</legend>
             <span>
                 <label for="firstname">First Name</label> 
                 <input type="text" name= "firstname" id="firstname" maxlength="25" pattern="^[a-zA-Z]+$" required="required"/>
@@ -51,7 +50,7 @@
             </span>
         </fieldset>
         <fieldset class="u-margin-bottom-4">
-            <legend class="heading-thirst">Your address</legend>
+            <legend class="heading-third">Your address</legend>
             <span>
                 <label for="street">Street</label> 
                 <input type="text" name= "street" id="street" maxlength="40"/>
@@ -88,7 +87,7 @@
             </span>
         </fieldset>
         <fieldset class="u-margin-bottom-4">
-            <legend class="heading-thirst">Products</legend>
+            <legend class="heading-third">Products</legend>
             <span class="section__enquire__select">
                 <label for="newcustomer">New customer</label>
                 <select name="newcustomer" id="newcustomer" required="required">
@@ -110,14 +109,14 @@
             </span>
         </fieldset>
         <fieldset class="u-margin-bottom-4">
-            <legend class="heading-thirst">Notes</legend>
+            <legend class="heading-third">Notes</legend>
             <span>
                 <label for="comments">Comments:</label> 
                 <textarea placeholder="Your comments..." id="comments" name="comments" rows="6" cols="40"></textarea>
             </span>
         </fieldset>
         <p class="u-margin-bottom-4">
-            <input class="btn btn__bold" type="submit" value="Submit"/>
+            <input class="btn btn__bold u-margin-right-2" type="submit" value="Submit"/>
             <input class="btn" type="reset" value="Reset"/>
         </p>
         </form>
@@ -131,7 +130,6 @@
             <small><a href="https://www.swinburne.edu.au">&#169; Swinburne University of Technology</a></small>
         </span>
     </footer>
-    <!-- Finsih footer -->
     <!-- Finsih footer -->
 </body>
 </html>

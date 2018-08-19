@@ -92,14 +92,26 @@ footer {
   font-weight: 700;
   letter-spacing: .2rem; }
 
-.heading-thirst {
+.heading-third {
   font-size: 1.5rem;
   text-transform: uppercase;
   font-weight: 400;
   letter-spacing: .2rem; }
 
+.main__aside p {
+  font-size: 16px;
+  line-height: 22px;
+  font-family: 'Open Sans', sans-serif; }
+
+.heading-border {
+  border-bottom: 2px solid #ffd000;
+  display: inline-block; }
+
 .u-text-center {
   text-align: center; }
+
+.u-margin-top-4 {
+  margin-top: 4rem; }
 
 .u-margin-bottom-15 {
   margin-bottom: 15rem; }
@@ -109,6 +121,21 @@ footer {
 
 .u-margin-bottom-4 {
   margin-bottom: 4rem; }
+
+.u-margin-bottom-2 {
+  margin-bottom: 2rem; }
+
+.u-margin-right-2 {
+  margin-right: 2rem; }
+
+.u-margin-right-20 {
+  margin-right: 20rem; }
+
+.u-margin-left-20 {
+  margin-left: 20rem; }
+
+.display-flex {
+  display: flex; }
 
 .btn {
   border: none;
@@ -174,7 +201,7 @@ footer {
 nav {
   position: absolute;
   right: 15rem;
-  top: -1rem; }
+  top: 4rem; }
   nav ul {
     list-style: none; }
     nav ul li {
@@ -208,6 +235,8 @@ nav {
     max-width: 98rem;
     margin: 0 auto;
     padding-top: 8rem; }
+    .article__item ul {
+      margin-top: 50px; }
     .article__item__title {
       position: absolute;
       left: 50%;
@@ -220,9 +249,6 @@ nav {
 .fas {
   color: #ffe570;
   margin-bottom: 2rem; }
-
-ul {
-  margin-top: 50px; }
 
 .section__enquire {
   margin: 0 auto;
@@ -250,5 +276,42 @@ fieldset input[type="radio"] {
   width: 25%;
   vertical-align: baseline; }
 
-input[type="submit"] {
-  margin-right: 2rem; }
+.main {
+  margin-top: 12rem;
+  background: #f7f7f7; }
+  .main form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .main #email {
+    width: 20rem;
+    height: 3rem;
+    border: 2px solid #ffd000; }
+  .main__section {
+    margin-top: 4rem;
+    float: left;
+    width: 75%; }
+    .main__section__title {
+      margin: 0 auto;
+      text-align: center; }
+    .main__section__body {
+      width: 80%;
+      margin: 0 auto; }
+      .main__section__body table {
+        width: 100%;
+        border-collapse: collapse; }
+        .main__section__body table caption {
+          margin-bottom: 1rem; }
+        .main__section__body table th, .main__section__body table td {
+          border: 1px solid #262626;
+          text-align: center; }
+          .main__section__body table th img, .main__section__body table td img {
+            width: 1.5rem;
+            margin-right: 1rem; }
+  .main__aside {
+    margin-top: 2rem;
+    height: 65rem;
+    float: right;
+    padding: 2rem;
+    border: 2px solid #ffd000;
+    width: 25%; }
