@@ -23,6 +23,17 @@
 
         ul {
             margin-top: 50px;
+            list-style: none;
+            li {
+                margin-bottom: 2rem;
+            }
+            li:last-child {
+                margin-bottom: 6rem;
+            }
+            li::before {
+                content: "•"; 
+                color: $color-blue;
+            }
         }
 
         &__title {
@@ -32,13 +43,13 @@
         &__box {
             display: flex;
             margin-top: 7rem;
+            .fas {
+                color: $color-primary-light;
+                margin-bottom: 2rem;
+            }
         }
     }
 }
 
-.fas {
-    color: $color-primary-light;
-    margin-bottom: 2rem;
-}
 
 

@@ -14,3 +14,46 @@ body {
     box-sizing: border-box;
 }
 
+fieldset {
+    span {
+        display: flex;  
+        margin: 3rem;  
+        margin-left: 2rem;
+    }
+    label {
+        width: 15%;
+    }
+    input, textarea {
+        width: 30%;
+    }
+    #comments {
+        height: 8rem;
+    }
+    input[type="radio"] {
+        margin-right: -1rem;
+        width: 25%;
+        vertical-align: baseline;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    caption {
+        margin-bottom: 1rem;
+    }
+    th, td {
+        border: 1px solid $color-black;
+        text-align: center;
+        img {
+            width: 1.5rem;
+            margin-right: 1rem;
+        }
+    }
+    th {
+        background-color: $color-grey;
+    }
+    td {
+        background-color: $color-primary-light;
+    }
+}

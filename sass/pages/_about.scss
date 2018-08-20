@@ -1,0 +1,32 @@
+.about__details {
+    p {
+        margin-right: 2rem;
+    }
+    &__left {
+        float: left;
+    }
+    &__right {
+        float: right;
+        margin-right: 8rem;
+        margin-top: 2rem;
+    }
+    &__avatar {
+        width: 20rem;
+        border:2px solid $color-primary; 
+        padding:2px; 
+        background: $color-grey; 
+    }
+    th{
+        border: none;
+    }
+    th {
+        width: 30%;
+    }
+    td {
+        width: 70%;
+    }
+    .fas {
+        color: $color-black-light;
+        margin-right: 2rem;
+    }
+}

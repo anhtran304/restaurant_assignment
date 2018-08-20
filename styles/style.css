@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @keyframes spin {
   100% {
     -webkit-transform: rotateY(-360deg);
@@ -35,6 +36,41 @@ html {
 
 body {
   box-sizing: border-box; }
+
+fieldset span {
+  display: flex;
+  margin: 3rem;
+  margin-left: 2rem; }
+
+fieldset label {
+  width: 15%; }
+
+fieldset input, fieldset textarea {
+  width: 30%; }
+
+fieldset #comments {
+  height: 8rem; }
+
+fieldset input[type="radio"] {
+  margin-right: -1rem;
+  width: 25%;
+  vertical-align: baseline; }
+
+table {
+  width: 100%;
+  border-collapse: collapse; }
+  table caption {
+    margin-bottom: 1rem; }
+  table th, table td {
+    border: 1px solid #262626;
+    text-align: center; }
+    table th img, table td img {
+      width: 1.5rem;
+      margin-right: 1rem; }
+  table th {
+    background-color: #f7f7f7; }
+  table td {
+    background-color: #ffe570; }
 
 body {
   font-family: "Lato", sans-serif;
@@ -100,12 +136,28 @@ footer {
 
 .main__aside p {
   font-size: 16px;
-  line-height: 22px;
+  line-height: 2.2rem;
   font-family: 'Open Sans', sans-serif; }
 
 .heading-border {
   border-bottom: 2px solid #ffd000;
   display: inline-block; }
+
+.about__details a {
+  font-weight: 400;
+  text-decoration: none;
+  color: #ffd000;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out; }
+
+.about__details a:hover {
+  text-decoration: underline;
+  color: rgba(0, 0, 0, 0.6); }
+
+.about__details a:focus {
+  text-decoration: none; }
 
 .u-text-center {
   text-align: center; }
@@ -136,6 +188,10 @@ footer {
 
 .display-flex {
   display: flex; }
+
+.container {
+  width: 85%;
+  margin: 0 auto; }
 
 .btn {
   border: none;
@@ -236,7 +292,15 @@ nav {
     margin: 0 auto;
     padding-top: 8rem; }
     .article__item ul {
-      margin-top: 50px; }
+      margin-top: 50px;
+      list-style: none; }
+      .article__item ul li {
+        margin-bottom: 2rem; }
+      .article__item ul li:last-child {
+        margin-bottom: 6rem; }
+      .article__item ul li::before {
+        content: "•";
+        color: #2f8cf7; }
     .article__item__title {
       position: absolute;
       left: 50%;
@@ -245,36 +309,16 @@ nav {
     .article__item__box {
       display: flex;
       margin-top: 7rem; }
-
-.fas {
-  color: #ffe570;
-  margin-bottom: 2rem; }
+      .article__item__box .fas {
+        color: #ffe570;
+        margin-bottom: 2rem; }
 
 .section__enquire {
   margin: 0 auto;
-  margin-top: 20vh;
+  margin-top: 15rem;
   max-width: 70%; }
   .section__enquire__select {
     align-items: center; }
-
-fieldset span {
-  display: flex;
-  margin: 3rem;
-  margin-left: 2rem; }
-
-fieldset label {
-  width: 15%; }
-
-fieldset input, fieldset textarea {
-  width: 30%; }
-
-fieldset #comments {
-  height: 8rem; }
-
-fieldset input[type="radio"] {
-  margin-right: -1rem;
-  width: 25%;
-  vertical-align: baseline; }
 
 .main {
   margin-top: 12rem;
@@ -297,17 +341,6 @@ fieldset input[type="radio"] {
     .main__section__body {
       width: 80%;
       margin: 0 auto; }
-      .main__section__body table {
-        width: 100%;
-        border-collapse: collapse; }
-        .main__section__body table caption {
-          margin-bottom: 1rem; }
-        .main__section__body table th, .main__section__body table td {
-          border: 1px solid #262626;
-          text-align: center; }
-          .main__section__body table th img, .main__section__body table td img {
-            width: 1.5rem;
-            margin-right: 1rem; }
   .main__aside {
     margin-top: 2rem;
     height: 65rem;
@@ -315,3 +348,33 @@ fieldset input[type="radio"] {
     padding: 2rem;
     border: 2px solid #ffd000;
     width: 25%; }
+
+.about__details p {
+  margin-right: 2rem; }
+
+.about__details__left {
+  float: left; }
+
+.about__details__right {
+  float: right;
+  margin-right: 8rem;
+  margin-top: 2rem; }
+
+.about__details__avatar {
+  width: 20rem;
+  border: 2px solid #ffd000;
+  padding: 2px;
+  background: #f7f7f7; }
+
+.about__details th {
+  border: none; }
+
+.about__details th {
+  width: 30%; }
+
+.about__details td {
+  width: 70%; }
+
+.about__details .fas {
+  color: #1e2228;
+  margin-right: 2rem; }

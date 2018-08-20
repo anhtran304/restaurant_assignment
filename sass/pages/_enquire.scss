@@ -1,7 +1,7 @@
 .section {
     &__enquire {
         margin: 0 auto;
-        margin-top: 20vh;
+        margin-top: 15rem;
         max-width: 70%;
     &__select {
         align-items: center;
@@ -9,26 +9,6 @@
     }
 }
 
-fieldset {
-    span {
-        display: flex;  
-        margin: 3rem;  
-        margin-left: 2rem;
-    }
-    label {
-        width: 15%;
-    }
-    input, textarea {
-        width: 30%;
-    }
-    #comments {
-        height: 8rem;
-    }
-    input[type="radio"] {
-        margin-right: -1rem;
-        width: 25%;
-        vertical-align: baseline;
-    }
-}
+
 
 
