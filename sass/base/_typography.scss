@@ -18,6 +18,17 @@ fieldset {
         font-size: 1.3rem;
         font-weight: 300;
     }
+    dl {
+        dt {
+            text-transform: capitalize;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        dd {
+            font-size: 1.3rem;
+            color: $color-blue-light;
+        }
+    }
 }
 
 footer {
@@ -100,4 +111,8 @@ footer {
     a:focus {
         text-decoration: none;
     }
+}
+
+.acknowledged {
+    color: $color-blue-light;
 }

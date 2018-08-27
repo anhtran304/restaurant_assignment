@@ -37,6 +37,9 @@ html {
 body {
   box-sizing: border-box; }
 
+fieldset legend {
+  width: auto; }
+
 fieldset span {
   display: flex;
   margin: 3rem;
@@ -52,7 +55,6 @@ fieldset #comments {
   height: 8rem; }
 
 fieldset input[type="radio"] {
-  margin-right: -1rem;
   width: 25%;
   vertical-align: baseline; }
 
@@ -91,6 +93,15 @@ nav {
 fieldset ::placeholder {
   font-size: 1.3rem;
   font-weight: 300; }
+
+fieldset dl dt {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  font-weight: bold; }
+
+fieldset dl dd {
+  font-size: 1.3rem;
+  color: #97AAC3; }
 
 footer {
   text-transform: capitalize;
@@ -158,6 +169,9 @@ footer {
 
 .about__details a:focus {
   text-decoration: none; }
+
+.acknowledged {
+  color: #97AAC3; }
 
 .u-text-center {
   text-align: center; }
@@ -308,6 +322,8 @@ nav {
       text-align: center; }
     .article__item__box {
       display: flex;
+      padding-left: 3rem;
+      padding-right: 3rem;
       margin-top: 7rem; }
       .article__item__box .fas {
         color: #ffe570;
@@ -378,3 +394,6 @@ nav {
 .about__details .fas {
   color: #1e2228;
   margin-right: 2rem; }
+
+.grid-test div[class^="col-"] {
+  background-color: #2f8cf7; }

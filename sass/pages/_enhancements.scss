@@ -1,0 +1,5 @@
+.grid-test {
+    div[class^="col-"] {
+        background-color: $color-blue;
+    }
+}

@@ -15,6 +15,9 @@ body {
 }
 
 fieldset {
+    legend {
+        width: auto;
+    }
     span {
         display: flex;  
         margin: 3rem;  
@@ -30,7 +33,6 @@ fieldset {
         height: 8rem;
     }
     input[type="radio"] {
-        margin-right: -1rem;
         width: 25%;
         vertical-align: baseline;
     }

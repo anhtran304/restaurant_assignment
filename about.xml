@@ -82,11 +82,21 @@
             </fieldset>
 
             <fieldset id="reflection" class="about__details u-margin-top-4 u-margin-bottom-4">
+                <legend class="heading-third">Education</legend>
+                <dl>
+                    <dt>Master of Information Technology</dt>
+                        <dd>Feb 2018 - Current</dd>
+                    <dt>Master of Business Administration</dt>
+                        <dd>Sep 2010 - Dec 2011</dd>
+                    <dt>BSc in Engineering</dt>
+                        <dd>Aug 2004 - July 2009</dd>
+                </dl> 
+            </fieldset>
+
+            <fieldset id="reflection" class="about__details u-margin-top-4 u-margin-bottom-4">
                 <legend class="heading-third">Reflection</legend>
                 <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quibusdam voluptas itaque voluptate ducimus iure, cum quae, facere ipsam cupiditate ea excepturi blanditiis harum, est laborum odio illum culpa minus!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quibusdam voluptas itaque voluptate ducimus iure, cum quae, facere ipsam cupiditate ea excepturi blanditiis harum, est laborum odio illum culpa minus!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quibusdam voluptas itaque voluptate ducimus iure, cum quae, facere ipsam cupiditate ea excepturi blanditiis harum, est laborum odio illum culpa minus!
+                    Hard-working web developer with a flair for creating elegant solutions in the least amount of time. Developed an ecommerce webapp, customer web portal, documentary launch website, and donations webapp for a local charity. Passionate about software architecture and cloud computing. Regular attendee of web developer meetups and hackathons
                 </p>
             </fieldset>
         </div>

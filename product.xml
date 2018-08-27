@@ -55,6 +55,7 @@
                     </div>
                     <div>
                         <img class="u-margin-right-20" src="images/chart.png" width="200" alt=""/>
+                        <p class="acknowledged">Acknowledged images: <a href="https://www.garynealon.com/">Gary Nealon</a></p>
                     </div>
                 </div>
             </section>
@@ -99,6 +100,7 @@
                         </tr>
                         </tbody>
                     </table>
+                    <p class="acknowledged">Acknowledged images from: <a href="https://www.instarem.com/en-au/">Instarem</a></p>
                 </div>
             </section>
         <!-- Finish section -->

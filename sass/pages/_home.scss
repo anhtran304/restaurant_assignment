@@ -39,9 +39,11 @@
         &__title {
             @include blockcenter;
         }
-
+        
         &__box {
             display: flex;
+            padding-left: 3rem;
+            padding-right: 3rem;
             margin-top: 7rem;
             .fas {
                 color: $color-primary-light;
