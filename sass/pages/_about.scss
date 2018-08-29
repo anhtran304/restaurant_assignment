@@ -1,3 +1,4 @@
+// CSS for about page
 .about__details {
     p {
         margin-right: 2rem;
@@ -12,7 +13,7 @@
     }
     &__avatar {
         width: 20rem;
-        border:2px solid $color-primary; 
+        border:4px double $color-primary; 
         padding:2px; 
         background: $color-grey; 
     }
@@ -29,4 +30,21 @@
         color: $color-black-light;
         margin-right: 2rem;
     }
+}
+
+.breadcrumb {
+    display: flex;
+    justify-content: center;
+
+    a {
+        margin-right: 1rem;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+    
+}
+
+.reflextion {
+    margin: 2rem;
 }

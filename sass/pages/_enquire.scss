@@ -1,11 +1,13 @@
+// CSS for enquire page
 .section {
     &__enquire {
         margin: 0 auto;
-        margin-top: 15rem;
+        margin-top: 2rem;
         max-width: 70%;
-    &__select {
-        align-items: center;
-        }
+        
+        &__select {
+            align-items: center;
+            }
     }
 }
 

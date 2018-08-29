@@ -1,3 +1,4 @@
+// CSS for Index page
 .article {
     background-color: $color-grey;
 
@@ -11,7 +12,7 @@
         clip-path: polygon(0 0, 100% 0, 100% 70vh, 0 100%);
 
         &__heading-primary {
-            top: 55%;
+            top: 45%;
             @include blockcenter;
         }
     }

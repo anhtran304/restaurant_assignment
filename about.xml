@@ -18,9 +18,9 @@
         <nav>
             <ul>
                 <li><a href="index.xml">Home</a> </li>
-                <li><a href="product.xml">Products</a></li>
+                <li><a href="products.xml">Products</a></li>
                 <li><a href="enquire.xml">Enquire</a></li>
-                <li><a href="Enhancements.xml">Enhancements</a></li>
+                <li><a href="enhancements.xml">Enhancements</a></li>
                 <li><a href="about.xml">About</a></li>
             </ul>
         </nav>
@@ -30,6 +30,12 @@
             <h2 class="heading-secondary heading-border">
                 About
             </h2>
+            <div class="breadcrumb u-margin-top-1">
+                <a href="#details">Details</a>  
+                <a href="#timetable">Timetable</a>  
+                <a href="#education">Education</a>  
+                <a href="#reflection">Reflection</a>  
+            </div>
             <fieldset id="details" class="about__details u-margin-top-4 u-margin-bottom-4">
                 <legend class="heading-third">Details</legend>
                 <div class="about__details__left">
@@ -56,8 +62,6 @@
                     <table>
                         <thead>
                             <tr>
-                            <!-- the scope attribute assists non-visual user agents -->
-                            <!-- rowspan and colspan allow multiple cells to be merged -->
                             <th rowspan="2" scope="col">Class</th>
                             </tr>
                             <tr>
@@ -81,9 +85,9 @@
                     </table>
             </fieldset>
 
-            <fieldset id="reflection" class="about__details u-margin-top-4 u-margin-bottom-4">
+            <fieldset id="education" class="about__details u-margin-top-4 u-margin-bottom-4">
                 <legend class="heading-third">Education</legend>
-                <dl>
+                <dl class="u-margin-bottom-2">
                     <dt>Master of Information Technology</dt>
                         <dd>Feb 2018 - Current</dd>
                     <dt>Master of Business Administration</dt>
@@ -95,9 +99,8 @@
 
             <fieldset id="reflection" class="about__details u-margin-top-4 u-margin-bottom-4">
                 <legend class="heading-third">Reflection</legend>
-                <p>
-                    Hard-working web developer with a flair for creating elegant solutions in the least amount of time. Developed an ecommerce webapp, customer web portal, documentary launch website, and donations webapp for a local charity. Passionate about software architecture and cloud computing. Regular attendee of web developer meetups and hackathons
-                </p>
+                <p class="reflextion">
+                From week 1 to week 4, I have been learning about the use of HTML to marking up the web pages. Along the way, I learn how to apply my analysis skills and use it in my assignment to determine how do I design the website, and connect everything together. I also learn how to use CSS to present website better. My assignment is a website for money transfer, I apply my skill set from design stage until this point. However, I can see that a lot of learning need to be done more in order to catch up with the real world. I get the ideal from the lecture and lab, and sometimes try to find more relevant information around that issue that I came across, but I did not have enough time to go deeper in the issue. In order to improve it, I believed it will be better for me to put more quiz questions after finishing lab class. I also think it could be an idea to make the other website based on whatever I learn. I hope to see my knowledge get improved in the next reflection.                </p>
             </fieldset>
         </div>
     </section>

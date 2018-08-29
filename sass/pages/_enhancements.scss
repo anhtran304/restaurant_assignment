@@ -1,5 +1,10 @@
+// CSS for enhancements page
 .grid-test {
     div[class^="col-"] {
         background-color: $color-blue;
     }
+}
+
+.animation {
+    width: 25rem;
 }

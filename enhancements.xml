@@ -18,9 +18,9 @@
         <nav>
             <ul>
                 <li><a href="index.xml">Home</a> </li>
-                <li><a href="product.xml">Products</a></li>
+                <li><a href="products.xml">Products</a></li>
                 <li><a href="enquire.xml">Enquire</a></li>
-                <li><a href="Enhancements.xml">Enhancements</a></li>
+                <li><a href="enhancements.xml">Enhancements</a></li>
                 <li><a href="about.xml">About</a></li>
             </ul>
         </nav>
@@ -29,8 +29,22 @@
     <section class="section__enquire">
         <div class="u-text-center u-margin-bottom-4">
             <h2 class="heading-secondary heading-border u-margin-bottom-4">
+                Animation
+            </h2>
+            <div class="u-margin-bottom-4">
+                <span class="heading-primary--main">Primary</span>
+                <span class="heading-primary--sub">Sub</span>
+                <p class="u-margin-bottom-4">Animation is built on heading by CSS Animation keyframes as below</p>
+                <img class="animation" src="images/animation.jpg" alt="Animation"/>
+            </div>
+        </div>
+        <div class="u-text-center u-margin-bottom-4">
+            <h2 class="heading-secondary heading-border u-margin-bottom-4">
                 Responsive
             </h2>
+            <p class="u-margin-bottom-4">
+                I built a Responsive grid base on calc function in SASS. I calculate the width base on 100% width screen then minus the gutter between every collum, which is base on the font size of screen. In order to center the element, I used CSS "margin: 0 auto". Based on the way screen divided, the col is named "col-1-of-" as below.
+            </p>
             <article class="grid-test"> 
                 <div class="row">
                     <div class="col-1-of-2">

@@ -18,9 +18,9 @@
         <nav>
             <ul>
                 <li><a href="index.xml">Home</a> </li>
-                <li><a href="product.xml">Products</a></li>
+                <li><a href="products.xml">Products</a></li>
                 <li><a href="enquire.xml">Enquire</a></li>
-                <li><a href="Enhancements.xml">Enhancements</a></li>
+                <li><a href="enhancements.xml">Enhancements</a></li>
                 <li><a href="about.xml">About</a></li>
             </ul>
         </nav>
@@ -28,13 +28,17 @@
     <!-- Finish header -->
     <main class="main">
         <div class="main__section">
-            <section class="u-margin-bottom-4">
+            <section class="container">
                 <div class="main__section__title">
                     <h1 class="heading-secondary heading-border u-margin-bottom-4">
                         Products
                     </h1>
+                    <p>
+                    Currently, money can be received in three ways: bank account, cash pickup, home delivery. The delivery options varies depending on the recipient country. In Vietnam, all three options are available. In the India, UK, Canada, only bank account and cash pickup are available. In Korea and Australia, only bank account transfer is accepted.
+                    </p>
+                    <p class="acknowledged u-margin-bottom-4">Acknowledged from: <a href="https://www.wirebarley.com/">Wirebarley</a></p>
                 </div>
-                <div class="display-flex">
+                <div class="display-flex u-margin-bottom-4">
                     <div class="main__section__body">
                         <h2 class="heading-third u-margin-left-20">
                             Banking
@@ -71,7 +75,6 @@
                         <thead>
                             <tr>
                             <!-- the scope attribute assists non-visual user agents -->
-                            <!-- rowspan and colspan allow multiple cells to be merged -->
                             <th rowspan="2" scope="col">Country</th>
                             <th colspan="3" scope="col">Fees</th>
                             </tr>
@@ -92,11 +95,27 @@
                         </tr>
                         <tr>
                         <th scope="row">
+                            <img src="images/cad.png" alt="Canada"/>Canada
+                        </th>
+                        <td>$6</td>
+                        <td>$12</td>
+                        <td>$70</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">
                             <img src="images/inr.png" alt="India"/>India
                         </th>
                         <td>$4</td>
                         <td>$10</td>
                         <td>$50</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">
+                            <img src="images/uk.png" alt="UK"/>UK
+                        </th>
+                        <td>$5</td>
+                        <td>$11</td>
+                        <td>$70</td>
                         </tr>
                         </tbody>
                     </table>
@@ -106,10 +125,11 @@
         <!-- Finish section -->
         </div>
         <aside class="main__aside">
-            <p class="u-margin-bottom-4 u-margin-top-4">
+            <p class="u-margin-top-4">
                 At Swap, we provide you Zero-Margin FX rates - mid-market rates sourced directly from Reuters, with absolutely no margins added! We also transparently display our remittance fee, and the exact amount that the recipient would receive.
                 Use Swap and start saving on international money transfers. With us, your money can now <strong>#domore</strong> You can also track your desired FX rates by subscribing to our FX alerts.
             </p>
+            <p class="acknowledged u-margin-bottom-4">Acknowledged from: <a href="https://www.instarem.com/en-au/">Instarem</a></p>
             <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
                 <input  class="u-margin-bottom-2" type="email" name= "email" id="email" placeholder="Your email..." required="required"/>
                 <input class="btn btn__bold" type="submit" value="Subscribe"/>
