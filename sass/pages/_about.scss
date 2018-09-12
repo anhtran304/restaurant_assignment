@@ -5,6 +5,11 @@
     }
     &__left {
         float: left;
+        div {
+            display: flex;
+            padding: 1.7rem;
+            margin-left: 2rem;
+        }
     }
     &__right {
         float: right;

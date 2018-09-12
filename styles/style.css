@@ -380,6 +380,10 @@ nav {
 
 .about__details__left {
   float: left; }
+  .about__details__left div {
+    display: flex;
+    padding: 1.7rem;
+    margin-left: 2rem; }
 
 .about__details__right {
   float: right;
