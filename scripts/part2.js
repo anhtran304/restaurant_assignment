@@ -8,67 +8,69 @@
 
 "use strict";
 //Global variables accessible to all functions
-var recievedAddressField = null;
-var recievedBankField = null;
-var service = null;
-var serviceValue = null;
+var recievedAddressField;
+var recievedBankField;
+var service;
+var serviceValue;
+var transferRate;
+var transferAmount = 1000;
+var audVnd;
+var audCan;
+var audInd;
+var audUK;
 
-/* Calculate the sum and average of the array of number
-*  Display the results on the web page
-*/
-
-function enterNumber() {
-    var number = prompt("Enter your number");
-    var number = Number(number);   
-    if (isFinite(number)) {    
-        numbers.push(number);    
-    }
-    else {
-        alert("Please enter a valid number");
-    }
-    document.getElementById("numberList").innerHTML = "The numbers you have entered so far are: " + numbers;  
-    enterButton.textContent = "Enter your next number";	
-    calculateButton.style.visibility = "visible";     
-}
-/* Calculate the sum and average of the array of number
-*  Display the results on the web page
-*/
-function calculateAverage() {
-    var average = 0;
-    var total = 0;
-    for (var i = 0; i < numbers.length; i++) {
-        total += numbers[i];  
-    }
-    average = total / i;
-    document.getElementById("result").innerHTML = "The total of your numbers is " + total + " and their average is " + average;
+// Return CSS visibility and display for BankField and AddressField
+function visibilityDisplay(str1, str2) {
+    return `visibility: ${str1}; display: ${str2}`;
 }
 
+
+// Change CSS visibility and display for BankField and AddressField
 function serviceChoice(serviceChoice) {
     switch (serviceChoice) {
         case "banktobank":
-            recievedBankField.style.cssText = "visibility: visible; display: block;";
-            recievedAddressField.style.cssText = "visibility: hidden; display: none";
-        break;
+            recievedBankField.style.cssText = visibilityDisplay("visible", "block");
+            recievedAddressField.style.cssText = visibilityDisplay("hidden", "none");
+            break;
         case "banktopickup":
-            recievedBankField.style.cssText = "visibility: hidden; display: none";
-            recievedAddressField.style.cssText = "visibility: hidden; display: none";  
-        break;
+            recievedBankField.style.cssText = visibilityDisplay("hidden", "none");
+            recievedAddressField.style.cssText = visibilityDisplay("hidden", "none");  
+            break;
         case "banktohome":
-            recievedBankField.style.cssText = "visibility: hidden; display: none";
-            recievedAddressField.style.cssText = "visibility: visible; display: block;";   
+            recievedBankField.style.cssText = visibilityDisplay("hidden", "none");
+            recievedAddressField.style.cssText = visibilityDisplay("visible", "block");  
         break;
         default:
-        break;
+            break;
     }
 }
 
+function fetchCurrency() {
+    return fetch(`http://free.currencyconverterapi.com/api/v5/convert?q=AUD_VND&compact=y`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+        audVnd = data.AUD_VND.val;
+    })
+    .catch(function() {
+      console.log("Something went wrong");
+    });
+}
+
+// Init function
 function init() {
-    
+
+    fetchCurrency("AUD_VND").then(function() {
+        console.log(audVnd);
+        document.getElementById("recievedAmount").value = Math.round(audVnd);
+    });
+
     recievedAddressField = document.getElementById("recievedAddressField");
-    recievedAddressField.style.cssText = "visibility: hidden; display: none";   
+    recievedAddressField.style.cssText = visibilityDisplay("hidden", "none");   
 
     recievedBankField = document.getElementById("recievedBankField");
-    recievedBankField.style.cssText = "visibility: hidden; display: none";  
+    recievedBankField.style.cssText = visibilityDisplay("hidden", "none");  
 
     service = document.getElementsByName("service");
     for (var i = 0; i < service.length; i++) {
@@ -76,6 +78,9 @@ function init() {
             serviceChoice(this.value);
         }
     }
+
+    document.getElementById("transferAmount").value = transferAmount;
 }
 
+// Window finished load
 window.onload = init;
