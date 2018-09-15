@@ -3,14 +3,24 @@
   height: 4rem;
   width: 20rem;
   font-size: 2rem;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.55);
-  cursor: pointer;
+  box-shadow: 1px 8px 5px 1px rgba($color-black, 0.55);
+  cursor: pointer;  
+  background-color: $color-grey;
+
+  &:active {
+    box-shadow: 0 4px rgba($color-black, 0.55);
+    transform: translateY(4px);
+  }
 
   &__bold {
     font-weight: bold;
   }
 
   &__success {
-    background-color: rgb(109, 190, 109);
+    background-color: $color-btn-success;
+
+    &:hover {
+    background-color: $color-btn-success-hover;
+    }
   }
 }

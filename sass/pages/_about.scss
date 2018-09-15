@@ -22,6 +22,9 @@
         padding:2px; 
         background: $color-grey; 
     }
+    a {
+        color: $color-primary;
+    }
     th{
         border: none;
     }
@@ -42,6 +45,7 @@
     justify-content: center;
 
     a {
+        color: $color-black-light;
         margin-right: 1rem;
         &:last-child{
             margin-right: 0;
@@ -53,3 +57,4 @@
 .reflextion {
     margin: 2rem;
 }
+
