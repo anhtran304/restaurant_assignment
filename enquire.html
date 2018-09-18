@@ -43,7 +43,8 @@
                 Enquire
             </h2>
         </div>
-        <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
+        <!-- <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php"> -->
+        <form id="enquire_form" method="post" action="payment.html">
         <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
         <fieldset class="u-margin-bottom-4">
             <legend class="heading-third">Your details</legend>
@@ -61,7 +62,7 @@
             </span>
             <span>
                 <label for="email">Email</label> 
-                <input type="email" name= "email" id="email" required="required"/>
+                <input id="email" type="email" name= "email" required="required"/>
             </span>
         </fieldset>
         <fieldset class="u-margin-bottom-4">
@@ -158,11 +159,11 @@
             </span>
             <span>
                 <label for="recievedAddress">Address</label>
-                <input type="text" name="recievedAddress" id="recievedAddress" maxlength="40" />
+                <input type="text" name="recievedAddress" id="recievedAddress" maxlength="200" />
             </span>
             <span>
                 <label for="recievedCity">City</label>
-                <input type="text" name="recievedAddress" id="recievedCity" maxlength="40" />
+                <input type="text" name="recievedAddress" id="recievedCity" maxlength="200" />
             </span>
         </fieldset>
         <fieldset id="recievedBankField" class="u-margin-bottom-4">
@@ -188,8 +189,8 @@
             </span>
         </fieldset>
         <p class="u-margin-bottom-4 u-text-center display-flex">
-            <span class="btn btn__bold btn__success u-margin-right-2"><a href="payment.html">Transfer Now</a></span>
-            <!-- <input class="" type="submit" value="Transfer Now"/> -->
+            <!-- <span class="btn btn__bold btn__success u-margin-right-2"><a href="">Transfer Now</a></span> -->
+            <input id="submitButton" class="btn btn__bold btn__success u-margin-right-2" type="submit" value="Transfer Now"/>
             <input class="btn" type="reset" value="Reset"/>
         </p>
         </form>

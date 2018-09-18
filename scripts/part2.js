@@ -8,24 +8,29 @@
 
 "use strict";
 //Global variables accessible to all functions
+var formField;
 var recievedAddressField;
 var recievedBankField;
 var recievedAmountField;
 var transferAmountField;
+var recievedAmountLable;
+var serviceChoice;
 var feesField;
-var service;
-var serviceValue;
-var transferRate;
 var transferAmount = 1000;
 var recievedAmount;
 var countrySelect;
-var country;
 var currencies = ["AUD_VND", "AUD_CAD", "AUD_INR", "AUD_GBP"];
 var exchangRate;
 var audVnd;
 var audCad;
 var audInd;
 var audUK;
+
+
+var service;
+var banktopickup;
+var banktobank;
+var banktohome;
 
 // Return CSS visibility and display for BankField and AddressField
 function visibilityDisplay(str1, str2) {
@@ -34,23 +39,26 @@ function visibilityDisplay(str1, str2) {
 
 
 // Change CSS visibility and display for BankField and AddressField
-function serviceChoice(serviceChoice) {
-    switch (serviceChoice) {
-        case "banktobank":
-            recievedBankField.style.cssText = visibilityDisplay("visible", "block");
-            recievedAddressField.style.cssText = visibilityDisplay("hidden", "none");
-            break;
-        case "banktopickup":
-            recievedBankField.style.cssText = visibilityDisplay("hidden", "none");
-            recievedAddressField.style.cssText = visibilityDisplay("hidden", "none");  
-            break;
-        case "banktohome":
-            recievedBankField.style.cssText = visibilityDisplay("hidden", "none");
-            recievedAddressField.style.cssText = visibilityDisplay("visible", "block");  
-        break;
-        default:
-            break;
-    }
+function handleServiceChoice(e) {
+    console.log(e.target.value);
+    
+  switch (e.target.value) {
+    case "banktobank":
+        recievedBankField.style.cssText = visibilityDisplay("visible", "block");
+        recievedAddressField.style.cssText = visibilityDisplay("hidden", "none");
+        serviceChoice = "banktobank";
+      break;
+    case "banktopickup":
+        recievedBankField.style.cssText = visibilityDisplay("hidden", "none");
+        recievedAddressField.style.cssText = visibilityDisplay("hidden", "none");
+        serviceChoice = "banktopickup";
+      break;
+    case "banktohome":
+        recievedBankField.style.cssText = visibilityDisplay("hidden", "none");
+        recievedAddressField.style.cssText = visibilityDisplay("visible", "block");
+        serviceChoice = "banktohome";
+      break;
+  }
 }
 
 // Update Recieved Amount Field
@@ -124,6 +132,8 @@ function fetchCurrency(currencyPair) {
                     updateRecievedAmountField(transferAmount, data.AUD_VND.val);
                     exchangRate = audVnd.AUD_VND.val;
                     country = "vietnam";
+                    recievedAmountLable.innerHTML = "Recieved Amount - VND";
+                    serviceChoice = "banktopickup";
                 break;
                 case "AUD_CAD":
                     audCad = data;
@@ -150,18 +160,22 @@ function handleSelectCountry(e) {
     case "vietnam":
         country = "vietnam";
         exchangRate = audVnd.AUD_VND.val;
+        recievedAmountLable.innerHTML = "Recieved Amount - VND";
         break;
     case "canada":
         country = "canada";
         exchangRate = audCad.AUD_CAD.val;
+        recievedAmountLable.innerHTML = "Recieved Amount - CAD";
         break;
     case "india":
         country = "india";
         exchangRate = audInd.AUD_INR.val;
+        recievedAmountLable.innerHTML = "Recieved Amount - INR";
         break;
     case "uk":
         country = "uk";
         exchangRate = audUK.AUD_GBP.val;
+        recievedAmountLable.innerHTML = "Recieved Amount - GBP";
         break;
     default:
         break;
@@ -183,6 +197,58 @@ function handleRecievedAmount(e) {
     updateTransferAmountField(recievedAmount, exchangRate);
 }
 
+
+// Validate Form
+function validateForm(e) {
+    var errMsg = "";
+    var result = true;
+    var recievedBankAcount = document.getElementById("recievedBankAcount").value;
+    var recievedAccountName = document.getElementById("recievedAccountName").value;
+    var recievedBankName = document.getElementById("recievedBankName").value;
+    var recievedName = document.getElementById("recievedName").value;
+    var recievedPhone = document.getElementById("recievedPhone").value;
+    var recievedAddress = document.getElementById("recievedAddress").value;
+    var recievedCity = document.getElementById("recievedCity").value;   
+    console.log(errMsg);
+    
+    console.log(serviceChoice);
+    
+
+    if (transferAmount <= 0) { 
+        errMsg += "Please enter transfer amount.\n";
+    } 
+    if (serviceChoice == "banktobank") {
+        if (recievedBankAcount == "") {
+            errMsg += "Please enter recieved bank account.\n";
+        }
+        if (recievedAccountName == "") {
+          errMsg += "Please enter recieved account name.\n";
+        }
+        if (recievedBankName == "") {
+          errMsg += "Please enter recieved bank name.\n";
+        }
+    }
+    if (serviceChoice == "banktohome") {
+        if (recievedName == "") {
+          errMsg += "Please enter reciever name.\n";
+        }
+        if (recievedPhone == "") {
+          errMsg += "Please enter reciever phone number.\n";
+        }
+        if (recievedAddress == "") {
+            errMsg += "Please enter reciever address.\n";
+        }
+        if (recievedCity == "") {
+          errMsg += "Please enter reciever city.\n";
+        }
+    }
+    if (errMsg != "") {
+        alert(errMsg);
+        result = false;
+    }
+    return result;
+}
+
 // Init function
 function init() {
     
@@ -191,12 +257,13 @@ function init() {
     });
     
     document.getElementById("transferAmount").value = transferAmount;
-    service = document.getElementsByName("service");
-    for (var i = 0; i < service.length; i++) {
-        service[i].onclick = function () {
-            serviceChoice(this.value);
-        }
-    }
+
+    banktopickup = document.getElementById("banktopickup");
+    banktobank = document.getElementById("banktobank");
+    banktohome = document.getElementById("banktohome");
+    banktopickup.onclick = handleServiceChoice;
+    banktobank.onclick = handleServiceChoice;
+    banktohome.onclick = handleServiceChoice;
 
     recievedAddressField = document.getElementById("recievedAddressField");
     recievedAddressField.style.cssText = visibilityDisplay("hidden", "none");   
@@ -213,7 +280,12 @@ function init() {
     transferAmountField = document.getElementById("transferAmount");
     transferAmountField.oninput = handleTransferAmount;
 
+    recievedAmountLable = document.getElementById("lable_recievedAmount");
+
     feesField = document.getElementById("fees");
+
+    formField = document.getElementById("enquire_form");
+    formField.onsubmit = validateForm;
 }
 
 // Window finished load
