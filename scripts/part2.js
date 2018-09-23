@@ -17,6 +17,7 @@ var recievedAmountLable;
 var serviceChoice;
 var feesField;
 var transferAmount = 1000;
+var country;
 var recievedAmount;
 var countrySelect;
 var currencies = ["AUD_VND", "AUD_CAD", "AUD_INR", "AUD_GBP"];
@@ -64,57 +65,60 @@ function handleServiceChoice(e) {
 // Update Recieved Amount Field
 function updateRecievedAmountField(trfAmount, exRate) {
     recievedAmount = Math.round(trfAmount * exRate * 100) / 100;
-    recievedAmountField.value = recievedAmount;
+    recievedAmountField.value = recievedAmount.toLocaleString();
 }
 // Update Transfer Amount Field
 function updateTransferAmountField(reAmount, exRate) {
     transferAmount = Math.round(reAmount / exRate * 100) / 100;
-    transferAmountField.value = transferAmount;
+    transferAmountField.value = transferAmount.toLocaleString();
     updateFees(transferAmount, country);
 }
 
 // Update fees
 function updateFees(amount, country) {
-    switch (country) {
-      case "vietnam":
-        if (amount <= 1000) {
-          feesField.innerHTML = 6;
-        } else if (amount <= 3000) {
-          feesField.innerHTML = 13;
-        } else {
-          feesField.innerHTML = 80;
-        }
-        break;
-      case "canada":
-        if (amount <= 1000) {
-          feesField.innerHTML = 6;
-        } else if (amount <= 3000) {
-          feesField.innerHTML = 12;
-        } else {
-          feesField.innerHTML = 70;
-        }
-        break;
-      case "india":
-        if (amount <= 1000) {
-          feesField.innerHTML = 4;
-        } else if (amount <= 3000) {
-          feesField.innerHTML = 10;
-        } else {
-          feesField.innerHTML = 50;
-        }
-        break;
+    if (amount <= 0) {
+        feesField.innerHTML = 0;
+    } else {
+        switch (country) {
+        case "vietnam":
+            if (0 < amount <= 1000) {
+            feesField.innerHTML = 6;
+            } else if (1000 < amount <= 3000) {
+            feesField.innerHTML = 13;
+            } else {
+            feesField.innerHTML = 80;
+            }
+            break;
+        case "canada":
+            if (0 < amount <= 1000) {
+            feesField.innerHTML = 6;
+            } else if (1000 < amount <= 3000) {
+            feesField.innerHTML = 12;
+            } else {
+            feesField.innerHTML = 70;
+            }
+            break;
+        case "india":
+            if (0 < amount <= 1000) {
+            feesField.innerHTML = 4;
+            } else if (1000 < amount <= 3000) {
+            feesField.innerHTML = 10;
+            } else {
+            feesField.innerHTML = 50;
+            }
+            break;
         case "uk":
-        if (amount <= 1000) {
-          feesField.innerHTML = 5;
-        } else if (amount <= 3000) {
-          feesField.innerHTML = 11;
-        } else {
-          feesField.innerHTML = 70;
+            if (amount <= 1000) {
+            feesField.innerHTML = 5;
+            } else if (amount <= 3000) {
+            feesField.innerHTML = 11;
+            } else {
+            feesField.innerHTML = 70;
+            }
+            break;
+        default:
+            break;
         }
-        break;
-
-      default:
-        break;
     }
     
 }
@@ -186,17 +190,22 @@ function handleSelectCountry(e) {
 
 // Handle Transfer Amount change 
 function handleTransferAmount(e) {
-    transferAmount = e.target.value;
-    updateFees(transferAmount, country);
-    updateRecievedAmountField(transferAmount, exchangRate);
+    transferAmount = parseFloat(e.target.value.replace(/,/g, ""));
+    if (!isNaN(transferAmount)) {
+        updateFees(transferAmount, country);
+        updateRecievedAmountField(transferAmount, exchangRate);
+        transferAmountField.value = transferAmount.toLocaleString();
+    }
 }
 
 // Handle Recieved Amount change
 function handleRecievedAmount(e) {
-    recievedAmount = e.target.value;
-    updateTransferAmountField(recievedAmount, exchangRate);
+    recievedAmount = parseFloat(e.target.value.replace(/,/g, ""));
+    if (!isNaN(recievedAmount)) {
+        updateTransferAmountField(recievedAmount, exchangRate);
+        recievedAmountField.value = recievedAmount.toLocaleString();
+    }
 }
-
 
 // Validate Form
 function validateForm(e) {
@@ -208,11 +217,7 @@ function validateForm(e) {
     var recievedName = document.getElementById("recievedName").value;
     var recievedPhone = document.getElementById("recievedPhone").value;
     var recievedAddress = document.getElementById("recievedAddress").value;
-    var recievedCity = document.getElementById("recievedCity").value;   
-    console.log(errMsg);
-    
-    console.log(serviceChoice);
-    
+    var recievedCity = document.getElementById("recievedCity").value;       
 
     if (transferAmount <= 0) { 
         errMsg += "Please enter transfer amount.\n";
@@ -256,7 +261,7 @@ function init() {
         fetchCurrency(currrency);
     });
     
-    document.getElementById("transferAmount").value = transferAmount;
+    document.getElementById("transferAmount").value = transferAmount.toLocaleString();
 
     banktopickup = document.getElementById("banktopickup");
     banktobank = document.getElementById("banktobank");
