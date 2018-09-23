@@ -11,7 +11,7 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="styles/style.css" />
     <title>Swap - Money Transfer | Payment</title>
-    <script src="scripts/part2.js"></script>
+    <script src="scripts/payment.js"></script>
 </head>
 
 <body>
@@ -46,26 +46,31 @@
                 Payment
             </h2>
         </div>
-        <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
+        <form id="paymentForm" method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
             <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
             <fieldset class="u-margin-bottom-4">
                 <legend class="heading-third">Your details</legend>
                 <span>
-                    <label for="firstname">First Name</label>
-                    <input type="text" name="firstname" id="firstname" maxlength="25" pattern="^[a-zA-Z]+$" required="required" />
+                    <label>Your Name</label>
+                    <p id="confirm_name"></p>
+                    <input type="hidden" name="firstname" id="firstname" />
+                    <input type="hidden" name="lastname" id="lastname" />
                 </span>
                 <span>
-                    <label for="lastname">Last Name</label>
-                    <input type="text" name="lastname" id="lastname" maxlength="25" pattern="^[a-zA-Z]+$" required="required" />
+                    <label>Phone</label>
+                    <p id="confirm_phone"></p>
+                    <input type="hidden" name="phone" id="phone" />
                 </span>
                 <span>
-                    <label for="phone">Phone</label>
-                    <input type="text" name="phone" id="phone" pattern="^[0-9]{10}$" placeholder="04xx xxx xxx" />
+                    <label>Email</label>
+                    <p id="confirm_email"></p>
+                    <input type="hidden" name="email" id="email"/>
                 </span>
-                <span>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required="required" />
-                </span>
+                <!-- <span>
+                    <label>Address</label>
+                    <p id="confirm_email"></p>
+                    <input type="hidden" name="email" id="email"/>
+                </span> -->
             </fieldset>
             <fieldset class="u-margin-bottom-4">
                 <legend class="heading-third">Your address</legend>
@@ -95,33 +100,9 @@
                     <label for="postcode">Postcode</label>
                     <input type="text" name="postcode" id="postcode" pattern="^[0-9]{4}$" />
                 </span>
-                <!-- <span>
-                <label for="callback"><input type="radio" id="callback" name="contactback" value="callback" required="required"/>Call you back</label> 
-                <label for="emailback"><input type="radio" id="emailback" name="contactback" value="emailback"/>Email you back</label>             
-            </span> -->
             </fieldset>
             <fieldset class="u-margin-bottom-4">
                 <legend class="heading-third">Money Transfer</legend>
-                <!-- <span class="section__enquire__select">
-                <label for="newcustomer">New customer</label>
-                <select name="newcustomer" id="newcustomer" required="required">
-                    <option value="">Choose</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </span> -->
-                <!-- <span class="section__enquire__select">
-                <label for="banktobank">Bank to Bank</label>
-                <input type="checkbox" name="products[]" value="banktobank" id="banktobank" checked="checked"/>
-            </span>
-            <span class="section__enquire__select">
-                <label for="banktopickup">Bank to Pick up</label>
-                <input type="checkbox" name="products[]" value="banktopickup" id="banktopickup"/>
-            </span>
-            <span class="section__enquire__select">
-                <label for="banktohome">Bank to Home</label>
-                <input type="checkbox" name="products[]" value="banktohome" id="banktohome"/>
-            </span> -->
                 <span>
                     <label for="transferAmount">Transfer Amount - AUD</label>
                     <input id="transferAmount" type="text" name="transferAmount" />
@@ -194,9 +175,8 @@
                 </span>
             </fieldset>
             <p class="u-margin-bottom-4 u-text-center display-flex">
-                <span class="btn btn__bold btn__success u-margin-right-2"><a href="payment.html">Transfer Now</a></span>
-                <!-- <input class="" type="submit" value="Transfer Now"/> -->
-                <input class="btn" type="reset" value="Reset" />
+                <input id="submitButton" class="btn btn__bold btn__success u-margin-right-2" type="submit" value="Check Out" />
+                <input class="btn u-text-center" id="cancelButton" value="Cancel" />
             </p>
         </form>
     </section>

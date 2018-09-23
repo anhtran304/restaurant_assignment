@@ -1,5 +1,5 @@
 /* Author: Anh Tran - 101953626
-* Target: clickme.html
+* Target: enquire.html
 * Purpose: JavaScript used with 'enquire.html'
 * Created: 12/09/2018
 * Last updated: 12/09/2018
@@ -17,7 +17,7 @@ var recievedAmountLable;
 var serviceChoice;
 var feesField;
 var transferAmount = 1000;
-var country;
+var country = "vietnam";
 var recievedAmount;
 var countrySelect;
 var currencies = ["AUD_VND", "AUD_CAD", "AUD_INR", "AUD_GBP"];
@@ -40,9 +40,7 @@ function visibilityDisplay(str1, str2) {
 
 
 // Change CSS visibility and display for BankField and AddressField
-function handleServiceChoice(e) {
-    console.log(e.target.value);
-    
+function handleServiceChoice(e) {    
   switch (e.target.value) {
     case "banktobank":
         recievedBankField.style.cssText = visibilityDisplay("visible", "block");
@@ -71,50 +69,49 @@ function updateRecievedAmountField(trfAmount, exRate) {
 function updateTransferAmountField(reAmount, exRate) {
     transferAmount = Math.round(reAmount / exRate * 100) / 100;
     transferAmountField.value = transferAmount.toLocaleString();
-    updateFees(transferAmount, country);
 }
 
 // Update fees
 function updateFees(amount, country) {
-    if (amount <= 0) {
+    if (isNaN(amount) || (amount <= 0)) {
         feesField.innerHTML = 0;
     } else {
         switch (country) {
         case "vietnam":
-            if (0 < amount <= 1000) {
+            if ((0 < amount) && (amount<= 1000)) {                
             feesField.innerHTML = 6;
-            } else if (1000 < amount <= 3000) {
+            } else if ((1000 < amount) && (amount <= 3000)) {    
             feesField.innerHTML = 13;
-            } else {
+            } else if (amount > 3000) {
             feesField.innerHTML = 80;
             }
             break;
         case "canada":
-            if (0 < amount <= 1000) {
-            feesField.innerHTML = 6;
-            } else if (1000 < amount <= 3000) {
-            feesField.innerHTML = 12;
-            } else {
-            feesField.innerHTML = 70;
+            if (0 < amount && amount <= 1000) {
+              feesField.innerHTML = 6;
+            } else if (1000 < amount && amount <= 3000) {
+              feesField.innerHTML = 12;
+            } else if (amount > 3000) {
+              feesField.innerHTML = 70;
             }
             break;
         case "india":
-            if (0 < amount <= 1000) {
+                if (0 < amount && amount <= 1000) {
             feesField.innerHTML = 4;
-            } else if (1000 < amount <= 3000) {
+                } else if (1000 < amount && amount <= 3000) {
             feesField.innerHTML = 10;
-            } else {
+                } else if (amount > 3000) {
             feesField.innerHTML = 50;
             }
             break;
         case "uk":
-            if (amount <= 1000) {
-            feesField.innerHTML = 5;
-            } else if (amount <= 3000) {
-            feesField.innerHTML = 11;
-            } else {
-            feesField.innerHTML = 70;
-            }
+                if (0 < amount && amount <= 1000) {
+                  feesField.innerHTML = 5;
+                } else if (1000 < amount && amount <= 3000) {
+                  feesField.innerHTML = 11;
+                } else if (amount > 3000) {
+                  feesField.innerHTML = 70;
+                }
             break;
         default:
             break;
@@ -135,7 +132,6 @@ function fetchCurrency(currencyPair) {
                     audVnd = data;
                     updateRecievedAmountField(transferAmount, data.AUD_VND.val);
                     exchangRate = audVnd.AUD_VND.val;
-                    country = "vietnam";
                     recievedAmountLable.innerHTML = "Recieved Amount - VND";
                     serviceChoice = "banktopickup";
                 break;
@@ -192,10 +188,10 @@ function handleSelectCountry(e) {
 function handleTransferAmount(e) {
     transferAmount = parseFloat(e.target.value.replace(/,/g, ""));
     if (!isNaN(transferAmount)) {
-        updateFees(transferAmount, country);
         updateRecievedAmountField(transferAmount, exchangRate);
         transferAmountField.value = transferAmount.toLocaleString();
     }
+    updateFees(transferAmount, country);
 }
 
 // Handle Recieved Amount change
@@ -212,12 +208,21 @@ function validateForm(e) {
     var errMsg = "";
     var result = true;
     var recievedBankAcount = document.getElementById("recievedBankAcount").value;
+    var firstName = document.getElementById("firstname").value;
+    var lastName = document.getElementById("lastname").value;
+    var phone = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;
+    var street = document.getElementById("street").value;
+    var suburb = document.getElementById("suburb").value;
+    var state = document.getElementById("state").value;
+    var postcode = document.getElementById("postcode").value;
     var recievedAccountName = document.getElementById("recievedAccountName").value;
     var recievedBankName = document.getElementById("recievedBankName").value;
     var recievedName = document.getElementById("recievedName").value;
     var recievedPhone = document.getElementById("recievedPhone").value;
     var recievedAddress = document.getElementById("recievedAddress").value;
-    var recievedCity = document.getElementById("recievedCity").value;       
+    var recievedCity = document.getElementById("recievedCity").value;  
+    var dataDetail, dataAddress, dataAmount;   
 
     if (transferAmount <= 0) { 
         errMsg += "Please enter transfer amount.\n";
@@ -251,7 +256,34 @@ function validateForm(e) {
         alert(errMsg);
         result = false;
     }
+
+    dataDetail = { 
+        firstName,
+        lastName, 
+        phone,
+        email
+    };    
+
+    dataAddress = {
+        street,
+        suburb,
+        state,
+        postcode
+    };
+
+    dataAmount = { transferAmount, country, recievedAmount, serviceChoice, fees: feesField.innerText };
+
+    if (result) {
+        storeEnquire(JSON.stringify(dataDetail), JSON.stringify(dataAddress), JSON.stringify(dataAmount));
+    }
+
     return result;
+}
+
+function storeEnquire(dataDetail, dataAddress, dataAmount) {
+    sessionStorage.dataDetail = dataDetail;
+    sessionStorage.dataAddress = dataAddress;
+    sessionStorage.dataAmount = dataAmount;
 }
 
 // Init function
@@ -289,7 +321,7 @@ function init() {
 
     feesField = document.getElementById("fees");
 
-    formField = document.getElementById("enquire_form");
+    formField = document.getElementById("enquireForm");
     formField.onsubmit = validateForm;
 }
 
