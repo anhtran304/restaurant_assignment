@@ -35,6 +35,11 @@ body {
 fieldset legend {
   width: auto; }
 
+fieldset div {
+  display: flex;
+  margin: 3rem;
+  margin-left: 2rem; }
+
 fieldset span {
   display: flex;
   margin: 3rem;
@@ -328,7 +333,7 @@ nav {
       padding-left: 3rem;
       padding-right: 3rem;
       margin-top: 7rem; }
-      .article__item__box .fas {
+      .article__item__box .fa {
         color: #ffe570;
         margin-bottom: 2rem; }
 
@@ -374,10 +379,6 @@ nav {
 
 .about__details__left {
   float: left; }
-  .about__details__left div {
-    display: flex;
-    padding: 1.7rem;
-    margin-left: 2rem; }
 
 .about__details__right {
   float: right;
@@ -386,6 +387,7 @@ nav {
 
 .about__details__avatar {
   width: 20rem;
+  height: 17rem;
   border: 4px double #ffd000;
   padding: 2px;
   background: #f7f7f7; }
@@ -423,3 +425,14 @@ nav {
 
 .animation {
   width: 25rem; }
+
+.fetching {
+  width: 50rem; }
+
+.binding {
+  margin-top: 5rem;
+  width: 50rem; }
+
+.json {
+  margin-top: 5rem;
+  width: 50rem; }

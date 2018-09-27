@@ -5,11 +5,6 @@
     }
     &__left {
         float: left;
-        div {
-            display: flex;
-            padding: 1.7rem;
-            margin-left: 2rem;
-        }
     }
     &__right {
         float: right;
@@ -18,6 +13,7 @@
     }
     &__avatar {
         width: 20rem;
+        height: 17rem;
         border:4px double $color-primary; 
         padding:2px; 
         background: $color-grey; 

@@ -6,7 +6,8 @@
     <meta name="keywords" content="HTML5, CSS, JavaScript" />
     <meta name="author" content="Anh Tran" />
     <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans:100,300,400,700,900" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/>
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="styles/style.css"/>
     <title>Swap - Money Transfer | Enquire</title>
     <script src="scripts/part2.js"></script>
@@ -28,7 +29,7 @@
                     <a href="enquire.html">Enquire</a>
                 </li>
                 <li>
-                    <a href="enhancements.html">Enhancements</a>
+                    <a href="enhancements2.html">Enhancements</a>
                 </li>
                 <li>
                     <a href="about.html">About</a>
@@ -69,11 +70,11 @@
             <legend class="heading-third">Your address</legend>
             <span>
                 <label for="street">Street</label> 
-                <input type="text" name= "street" id="street" maxlength="40"/>
+                <input type="text" name= "street" id="street" maxlength="40" required="required"/>
             </span>
             <span>
                 <label for="suburb">Suburb</label> 
-                <input type="text" name= "suburb" id="suburb" maxlength="20"/>
+                <input type="text" name= "suburb" id="suburb" maxlength="20" required="required"/>
             </span>
             <span class="section__enquire__select">
                 <label for="state">State</label>
@@ -91,35 +92,11 @@
             </span>
             <span>
                 <label for="postcode">Postcode</label> 
-                <input type="text" name= "postcode" id="postcode" pattern="^[0-9]{4}$"/>
+                <input type="text" name= "postcode" id="postcode" pattern="^[0-9]{4}$" required="required"/>
             </span>
-            <!-- <span>
-                <label for="callback"><input type="radio" id="callback" name="contactback" value="callback" required="required"/>Call you back</label> 
-                <label for="emailback"><input type="radio" id="emailback" name="contactback" value="emailback"/>Email you back</label>             
-            </span> -->
         </fieldset>
         <fieldset class="u-margin-bottom-4">
             <legend class="heading-third">Money Transfer</legend>
-            <!-- <span class="section__enquire__select">
-                <label for="newcustomer">New customer</label>
-                <select name="newcustomer" id="newcustomer" required="required">
-                    <option value="">Choose</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </span> -->
-            <!-- <span class="section__enquire__select">
-                <label for="banktobank">Bank to Bank</label>
-                <input type="checkbox" name="products[]" value="banktobank" id="banktobank" checked="checked"/>
-            </span>
-            <span class="section__enquire__select">
-                <label for="banktopickup">Bank to Pick up</label>
-                <input type="checkbox" name="products[]" value="banktopickup" id="banktopickup"/>
-            </span>
-            <span class="section__enquire__select">
-                <label for="banktohome">Bank to Home</label>
-                <input type="checkbox" name="products[]" value="banktohome" id="banktohome"/>
-            </span> -->
             <span>
                 <label for="transferAmount">Transfer Amount - AUD</label>
                 <input id="transferAmount" type="text" name="transferAmount"/>
@@ -127,7 +104,8 @@
             <span class="section__enquire__select">
                 <label for="country">Transfer to Country</label>
                 <select name="country" id="country" required="required">
-                    <option value="vietnam" selected>Vietnam</option>
+                    <option value="">Select country</option>
+                    <option value="vietnam" selected="selected">Vietnam</option>
                     <option value="canada">Canada</option>
                     <option value="india">India</option>
                     <option value="uk">UK</option>
@@ -143,7 +121,7 @@
                 <label for="banktohome"><input type="radio" id="banktohome" name="service" value="banktohome" />Bank to Home</label>
             </span>
             <span>
-                <label for="fees">Fees - AUD</label>
+                <label>Fees - AUD</label>
                 <label id="fees">6</label>
             </span>
         </fieldset>
@@ -151,40 +129,40 @@
             <legend class="heading-third">Reciever details</legend>
             <span>
                 <label for="recievedName">Name</label>
-                <input type="text" name="recievedName" id="recievedName" maxlength="25" pattern="^[a-zA-Z]+$"/>
+                <input type="text" name="recievedName" id="recievedName"/>
             </span>
             <span>
                 <label for="recievedPhone">Phone</label>
-                <input type="text" name="recievedPhone" id="recievedPhone" pattern="^[0-9]{10}$" />
+                <input type="text" name="recievedPhone" id="recievedPhone" pattern="^[0-9]{10}$"/>
             </span>
             <span>
                 <label for="recievedAddress">Address</label>
-                <input type="text" name="recievedAddress" id="recievedAddress" maxlength="200" />
+                <input type="text" name="recievedAddress" id="recievedAddress"/>
             </span>
             <span>
                 <label for="recievedCity">City</label>
-                <input type="text" name="recievedAddress" id="recievedCity" maxlength="200" />
+                <input type="text" name="recievedAddress" id="recievedCity"/>
             </span>
         </fieldset>
         <fieldset id="recievedBankField" class="u-margin-bottom-4">
             <legend class="heading-third">Reciever Bank details</legend>
             <span>
                 <label for="recievedBankAcount">Account Number</label>
-                <input type="text" name="recievedBankAcount" id="recievedBankAcount" maxlength="25" pattern="^[a-zA-Z]+$"/>
+                <input type="text" name="recievedBankAcount" id="recievedBankAcount" pattern="[0-9]+"/>
             </span>
             <span>
                 <label for="recievedAccountName">Account Name</label>
-                <input type="text" name="recievedAccountName" id="recievedAccountName" pattern="^[0-9]{10}$"/>
+                <input type="text" name="recievedAccountName" id="recievedAccountName"/>
             </span>
             <span>
                 <label for="recievedBankName">Bank Name</label>
-                <input type="text" name="recievedBankName" id="recievedBankName" maxlength="40" />
+                <input type="text" name="recievedBankName" id="recievedBankName" />
             </span>
         </fieldset>
         <fieldset class="u-margin-bottom-4">
             <legend class="heading-third">Notes</legend>
             <span>
-                <label for="comments">Comments:</label> 
+                <label for="comments">Comments</label> 
                 <textarea placeholder="Your comments..." id="comments" name="comments" rows="6" cols="40"></textarea>
             </span>
         </fieldset>

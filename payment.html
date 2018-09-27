@@ -7,8 +7,9 @@
     <meta name="keywords" content="HTML5, CSS, JavaScript" />
     <meta name="author" content="Anh Tran" />
     <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans:100,300,400,700,900" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="styles/style.css" />
     <title>Swap - Money Transfer | Payment</title>
     <script src="scripts/payment.js"></script>
@@ -31,7 +32,7 @@
                     <a href="enquire.html">Enquire</a>
                 </li>
                 <li>
-                    <a href="enhancements.html">Enhancements</a>
+                    <a href="enhancements2.html">Enhancements</a>
                 </li>
                 <li>
                     <a href="about.html">About</a>
@@ -50,129 +51,133 @@
             <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
             <fieldset class="u-margin-bottom-4">
                 <legend class="heading-third">Your details</legend>
-                <span>
+                <div>
                     <label>Your Name</label>
                     <p id="confirm_name"></p>
                     <input type="hidden" name="firstname" id="firstname" />
                     <input type="hidden" name="lastname" id="lastname" />
-                </span>
-                <span>
+                </div>
+                <div>
                     <label>Phone</label>
                     <p id="confirm_phone"></p>
                     <input type="hidden" name="phone" id="phone" />
-                </span>
-                <span>
+                </div>
+                <div>
                     <label>Email</label>
                     <p id="confirm_email"></p>
                     <input type="hidden" name="email" id="email"/>
-                </span>
-                <!-- <span>
+                </div>
+                <div>
                     <label>Address</label>
-                    <p id="confirm_email"></p>
-                    <input type="hidden" name="email" id="email"/>
-                </span> -->
-            </fieldset>
-            <fieldset class="u-margin-bottom-4">
-                <legend class="heading-third">Your address</legend>
-                <span>
-                    <label for="street">Street</label>
-                    <input type="text" name="street" id="street" maxlength="40" />
-                </span>
-                <span>
-                    <label for="suburb">Suburb</label>
-                    <input type="text" name="suburb" id="suburb" maxlength="20" />
-                </span>
-                <span class="section__enquire__select">
-                    <label for="state">State</label>
-                    <select name="state" id="state" required="required">
-                        <option value="">Please Select</option>
-                        <option value="nsw">NSW</option>
-                        <option value="vic">VIC</option>
-                        <option value="atc">ATC</option>
-                        <option value="qld">QLD</option>
-                        <option value="sa">SA</option>
-                        <option value="wa">WA</option>
-                        <option value="nt">NT</option>
-                        <option value="tas">TAS</option>
-                    </select>
-                </span>
-                <span>
-                    <label for="postcode">Postcode</label>
-                    <input type="text" name="postcode" id="postcode" pattern="^[0-9]{4}$" />
-                </span>
+                    <p id="confirm_dress"></p>
+                    <input type="hidden" name="street" id="street"/>
+                    <input type="hidden" name="suburb" id="suburb"/>
+                    <input type="hidden" name="state" id="state"/>
+                    <input type="hidden" name="postcode" id="postcode"/>
+                </div>
+                <div>
+                    <label>Comments</label>
+                    <p id="confirm_comments"></p>
+                    <input type="hidden" name="comments" id="comments" />
+                </div>
             </fieldset>
             <fieldset class="u-margin-bottom-4">
                 <legend class="heading-third">Money Transfer</legend>
-                <span>
-                    <label for="transferAmount">Transfer Amount - AUD</label>
-                    <input id="transferAmount" type="text" name="transferAmount" />
-                </span>
-                <span class="section__enquire__select">
-                    <label for="country">Transfer to Country</label>
-                    <select name="country" id="country" required="required">
-                        <option value="vietnam" selected>Vietnam</option>
-                        <option value="canada">Canada</option>
-                        <option value="india">India</option>
-                        <option value="uk">UK</option>
-                    </select>
-                </span>
-                <span>
-                    <label id="lable_recievedAmount" for="recievedAmount">Recieved Amount</label>
-                    <input id="recievedAmount" type="text" name="recievedAmount" />
-                </span>
-                <span>
-                    <label for="banktopickup"><input type="radio" id="banktopickup" name="service" value="banktopickup"
-                            required="required" checked="checked" />Bank to Pick up</label>
-                    <label for="banktobank"><input type="radio" id="banktobank" name="service" value="banktobank" />Bank
-                        to Bank</label>
-                    <label for="banktohome"><input type="radio" id="banktohome" name="service" value="banktohome" />Bank
-                        to Home</label>
-                </span>
-                <span>
-                    <label for="fees">Fees - AUD</label>
-                    <label id="fees">6</label>
-                </span>
+                <div>
+                    <label>Transfer Amount - AUD</label>
+                    <p id="confirm_transferAmount"></p>
+                    <input type="hidden" name="transferAmount" id="transferAmount"/>
+                </div>
+                <div>
+                    <label>Transfer to</label>
+                    <p id="confirm_country"></p>
+                    <input type="hidden" name="country" id="country"/>
+                </div>
+                <div>
+                    <label id="lable_recievedAmount">Recieved Amount</label>
+                    <p id="confirm_recievedAmount"></p>
+                    <input type="hidden" name="recievedAmount" id="recievedAmount"/>
+                </div>
+                <div>
+                    <label>Service choice</label>
+                    <p id="confirm_serviceChoice"></p>
+                    <input type="hidden" name="serviceChoice" id="serviceChoice" />
+                </div>
+                <div>
+                    <label>Total payment - AUD</label>
+                    <p id="confirm_fees"></p>
+                    <input type="hidden" name="fees" id="fees" />
+                </div>
             </fieldset>
             <fieldset id="recievedAddressField" class="u-margin-bottom-4">
                 <legend class="heading-third">Reciever details</legend>
-                <span>
-                    <label for="recievedName">Name</label>
-                    <input type="text" name="recievedName" id="recievedName" maxlength="25" pattern="^[a-zA-Z]+$" />
-                </span>
-                <span>
-                    <label for="recievedPhone">Phone</label>
-                    <input type="text" name="recievedPhone" id="recievedPhone" pattern="^[0-9]{10}$" />
-                </span>
-                <span>
-                    <label for="recievedAddress">Address</label>
-                    <input type="text" name="recievedAddress" id="recievedAddress" maxlength="40" />
-                </span>
-                <span>
-                    <label for="recievedCity">City</label>
-                    <input type="text" name="recievedAddress" id="recievedCity" maxlength="40" />
-                </span>
+                <div>
+                    <label>Name</label>
+                    <p id="confirm_recievedName"></p>
+                    <input type="hidden" name="recievedName" id="recievedName"/>
+                </div>
+                <div>
+                    <label>Phone</label>
+                    <p id="confirm_recievedPhone"></p>
+                    <input type="hidden" name="recievedPhone" id="recievedPhone"/>
+                </div>
+                <div>
+                    <label>Address</label>
+                    <p id="confirm_recievedAddress"></p>
+                    <input type="hidden" name="recievedAddress" id="recievedAddress"/>
+                </div>
+                <div>
+                    <label>City</label>
+                    <p id="confirm_recievedCity"></p>
+                    <input type="hidden" name="recievedCity" id="recievedCity"/>
+                </div>
             </fieldset>
             <fieldset id="recievedBankField" class="u-margin-bottom-4">
                 <legend class="heading-third">Reciever Bank details</legend>
-                <span>
-                    <label for="recievedBankAcount">Account Number</label>
-                    <input type="text" name="recievedBankAcount" id="recievedBankAcount" maxlength="25" pattern="^[a-zA-Z]+$" />
-                </span>
-                <span>
-                    <label for="recievedAccountName">Account Name</label>
-                    <input type="text" name="recievedAccountName" id="recievedAccountName" pattern="^[0-9]{10}$" />
-                </span>
-                <span>
-                    <label for="recievedBankName">Bank Name</label>
-                    <input type="text" name="recievedBankName" id="recievedBankName" maxlength="40" />
-                </span>
+                <div>
+                    <label>Account Number</label>
+                    <p id="confirm_recievedBankAcount"></p>
+                    <input type="hidden" name="recievedBankAcount" id="recievedBankAcount" />
+                </div>
+                <div>
+                    <label>Account Name</label>
+                    <p id="confirm_recievedAccountName"></p>
+                    <input type="hidden" name="recievedAccountName" id="recievedAccountName"/>
+                </div>
+                <div>
+                    <label>Bank Name</label>
+                    <p id="confirm_recievedBankName"></p>
+                    <input type="hidden" name="recievedBankName" id="recievedBankName"/>
+                </div>
             </fieldset>
-            <fieldset class="u-margin-bottom-4">
-                <legend class="heading-third">Notes</legend>
-                <span>
-                    <label for="comments">Comments:</label>
-                    <textarea placeholder="Your comments..." id="comments" name="comments" rows="6" cols="40"></textarea>
-                </span>
+            <fieldset id="payment" class="u-margin-bottom-4">
+                <legend class="heading-third">Payment</legend>
+                <div>
+                    <label>Credit card type</label>
+                    <label for="visa"><input type="radio" id="visa" name="creditCard" value="visa"/>Visa</label>
+                    <label for="mastercard"><input type="radio" id="mastercard" name="creditCard" value="mastercard" />Mastercard</label>
+                    <label for="american"><input type="radio" id="american" name="creditCard" value="american" />American Express</label>
+                </div>
+                <div>
+                    <label>Name on card</label>
+                    <input type="text" name="nameOnCard" id="nameOnCard" />
+                </div>
+                <div>
+                    <label>Card Number</label>
+                    <input type="text" name="cardNumber" id="cardNumber"/>
+                </div>
+                <div>
+                    <label>Expiry Month - MM</label>
+                    <input type="text" name="expiryMonth" id="expiryMonth"/>
+                </div>
+                <div>
+                    <label>Expiry Year - YY</label>
+                    <input type="text" name="expiryYear" id="expiryYear" />
+                </div>
+                <div>
+                    <label>Verification Value (CVV)</label>
+                    <input type="text" name="verification" id="verification" />
+                </div>
             </fieldset>
             <p class="u-margin-bottom-4 u-text-center display-flex">
                 <input id="submitButton" class="btn btn__bold btn__success u-margin-right-2" type="submit" value="Check Out" />

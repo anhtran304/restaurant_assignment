@@ -38,7 +38,6 @@ function visibilityDisplay(str1, str2) {
     return `visibility: ${str1}; display: ${str2}`;
 }
 
-
 // Change CSS visibility and display for BankField and AddressField
 function handleServiceChoice(e) {    
   switch (e.target.value) {
@@ -122,7 +121,7 @@ function updateFees(amount, country) {
 
 // Fetching data for exchange rate
 function fetchCurrency(currencyPair) {
-    fetch(`http://free.currencyconverterapi.com/api/v5/convert?q=${currencyPair}&compact=y`)
+    fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${currencyPair}&compact=y`)
         .then(function(response) {
             return response.json();
         })
@@ -204,10 +203,9 @@ function handleRecievedAmount(e) {
 }
 
 // Validate Form
-function validateForm(e) {
+function validateForm() {
     var errMsg = "";
     var result = true;
-    var recievedBankAcount = document.getElementById("recievedBankAcount").value;
     var firstName = document.getElementById("firstname").value;
     var lastName = document.getElementById("lastname").value;
     var phone = document.getElementById("phone").value;
@@ -216,16 +214,18 @@ function validateForm(e) {
     var suburb = document.getElementById("suburb").value;
     var state = document.getElementById("state").value;
     var postcode = document.getElementById("postcode").value;
-    var recievedAccountName = document.getElementById("recievedAccountName").value;
-    var recievedBankName = document.getElementById("recievedBankName").value;
+    var dataComments = document.getElementById("comments").value;  
     var recievedName = document.getElementById("recievedName").value;
     var recievedPhone = document.getElementById("recievedPhone").value;
     var recievedAddress = document.getElementById("recievedAddress").value;
     var recievedCity = document.getElementById("recievedCity").value;  
-    var dataDetail, dataAddress, dataAmount;   
+    var recievedBankAcount = document.getElementById("recievedBankAcount").value;
+    var recievedAccountName = document.getElementById("recievedAccountName").value;
+    var recievedBankName = document.getElementById("recievedBankName").value;
+    var dataDetail, dataAddress, dataAmount, dataReciever, dataRecieverBank;   
 
     if (transferAmount <= 0) { 
-        errMsg += "Please enter transfer amount.\n";
+        errMsg += "Please enter a positive transfer amount \n";
     } 
     if (serviceChoice == "banktobank") {
         if (recievedBankAcount == "") {
@@ -252,6 +252,54 @@ function validateForm(e) {
           errMsg += "Please enter reciever city.\n";
         }
     }
+
+    switch (state) {
+        case "vic":
+            if (!(postcode.toString()[0] == 3) || (postcode.toString()[0] == 8)) {
+                errMsg += "Postcode for VIC must start with 3 or 8\n";
+            }
+            break;
+        case "nsw":
+            if (!(postcode.toString()[0] == 1) || (postcode.toString()[0] == 2)) {
+                errMsg += "Postcode for NSW must start with 1 or 2\n";
+            }
+            break;
+        case "qld":
+            if (!(postcode.toString()[0] == 4) || (postcode.toString()[0] == 9)) {
+                errMsg += "Postcode for QLD must start with 4 or 9\n";
+            }
+            break;
+        case "nt":
+            if (!(postcode.toString()[0] == 0)) {
+                errMsg += "Postcode for NT must start with 0\n";
+            }
+            break;
+        case "wa":
+            if (!(postcode.toString()[0] == 6)) {
+                errMsg += "Postcode for WA must start with 6\n";
+            }
+            break;
+        case "sa":
+            if (!(postcode.toString()[0] == 5)) {
+                errMsg += "Postcode for SA must start with 5\n";
+            }
+            break;
+        case "tas":
+            if (!(postcode.toString()[0] == 7)) {
+                errMsg += "Postcode for TAS must start with 7\n";
+            }
+            break;
+        case "atc":
+            if (!(postcode.toString()[0] == 0)) {
+                errMsg += "Postcode for ATC must start with 0\n";
+            }
+            break;
+            
+    
+        default:
+            break;
+    }
+
     if (errMsg != "") {
         alert(errMsg);
         result = false;
@@ -271,19 +319,55 @@ function validateForm(e) {
         postcode
     };
 
-    dataAmount = { transferAmount, country, recievedAmount, serviceChoice, fees: feesField.innerText };
+    dataAmount = { 
+        transferAmount, 
+        country, 
+        recievedAmount, 
+        serviceChoice, 
+        fees: feesField.innerText 
+    };
+
+    dataReciever = { 
+        recievedName,
+        recievedPhone,
+        recievedAddress,
+        recievedCity 
+    };
+
+    dataRecieverBank = { 
+        recievedBankAcount, 
+        recievedAccountName, 
+        recievedBankName 
+    };
 
     if (result) {
-        storeEnquire(JSON.stringify(dataDetail), JSON.stringify(dataAddress), JSON.stringify(dataAmount));
+        storeEnquire(
+            JSON.stringify(dataDetail), 
+            JSON.stringify(dataAddress), 
+            JSON.stringify(dataAmount), 
+            dataComments, 
+            JSON.stringify(dataReciever), 
+            JSON.stringify(dataRecieverBank)
+            );
     }
 
     return result;
 }
 
-function storeEnquire(dataDetail, dataAddress, dataAmount) {
+function storeEnquire(
+    dataDetail,
+    dataAddress,
+    dataAmount,
+    dataComments,
+    dataReciever,
+    dataRecieverBank
+) {
     sessionStorage.dataDetail = dataDetail;
     sessionStorage.dataAddress = dataAddress;
     sessionStorage.dataAmount = dataAmount;
+    sessionStorage.dataComments = dataComments;
+    sessionStorage.dataReciever = dataReciever;
+    sessionStorage.dataRecieverBank = dataRecieverBank;
 }
 
 // Init function
