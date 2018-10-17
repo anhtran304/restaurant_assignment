@@ -189,6 +189,8 @@ function handleTransferAmount(e) {
     if (!isNaN(transferAmount)) {
         updateRecievedAmountField(transferAmount, exchangRate);
         transferAmountField.value = transferAmount.toLocaleString();
+    } else {
+        updateRecievedAmountField(0, exchangRate);
     }
     updateFees(transferAmount, country);
 }
@@ -199,6 +201,8 @@ function handleRecievedAmount(e) {
     if (!isNaN(recievedAmount)) {
         updateTransferAmountField(recievedAmount, exchangRate);
         recievedAmountField.value = recievedAmount.toLocaleString();
+    } else {
+        updateTransferAmountField(0, exchangRate);
     }
 }
 
@@ -224,8 +228,11 @@ function validateForm() {
     var recievedBankName = document.getElementById("recievedBankName").value;
     var dataDetail, dataAddress, dataAmount, dataReciever, dataRecieverBank;   
 
-    if (transferAmount <= 0) { 
+    if (isNaN(transferAmount) || transferAmount == 0) { 
         errMsg += "Please enter a positive transfer amount \n";
+    } 
+    if (isNaN(recievedAmount) || recievedAmount == 0) {
+      errMsg += "Please enter a positive recieved amount \n";
     } 
     if (serviceChoice == "banktobank") {
         if (recievedBankAcount == "") {
