@@ -12,31 +12,10 @@
     <title>Swap - Money Transfer | Enhancements</title>
 </head>
 <body>
-    <header class="header">
-        <div class="header__logo-box">
-            <img class="header__logo" src="images/logo.png" alt="Logo"/>
-        </div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="product.html">Products</a>
-                </li>
-                <li>
-                    <a href="enquire.html">Enquire</a>
-                </li>
-                <li>
-                    <a href="enhancements.html">Enhancements</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    
+    <!-- Header -->
+    <?php
+        include_once ("includes/header.inc");
+    ?>
     <section class="section__enquire">
         <div class="u-text-center u-margin-bottom-4">
             <h2 class="heading-secondary heading-border u-margin-bottom-4">
@@ -125,15 +104,10 @@
             </div>
         </div>
     </section>
-
-    <footer class="footer u-text-center">
-        <span>
-            <small><a href="mailto:tranmr@gmail.com">Mark up by: Anh Tran</a></small>
-        </span>
-        <span>
-            <small><a href="https://www.swinburne.edu.au">&#169; Swinburne University of Technology</a></small>
-        </span>
-    </footer>
+    <!-- Footer -->
+    <?php 
+        include_once ("includes/footer.inc");
+    ?>
     <!-- Finsih footer -->
 </body>
 </html>

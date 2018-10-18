@@ -8,6 +8,8 @@
 
 "use strict";
 //Global variables accessible to all functions
+var validate = false;
+
 var formField;
 var recievedAddressField;
 var recievedBankField;
@@ -413,7 +415,9 @@ function init() {
     feesField = document.getElementById("fees");
 
     formField = document.getElementById("enquireForm");
-    formField.onsubmit = validateForm;
+    if (validate) {
+        formField.onsubmit = validateForm;
+    }
 }
 
 // Window finished load

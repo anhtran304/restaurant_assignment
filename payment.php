@@ -16,30 +16,10 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="header__logo-box">
-            <img class="header__logo" src="images/logo.png" alt="Logo" />
-        </div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="product.html">Products</a>
-                </li>
-                <li>
-                    <a href="enquire.html">Enquire</a>
-                </li>
-                <li>
-                    <a href="enhancements2.html">Enhancements</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Header -->
+    <?php
+        include_once ("includes/header.inc");
+    ?>
     <!-- Finsih header -->
     <section class="section__enquire">
         <div class="u-text-center u-margin-bottom-4">
@@ -47,7 +27,7 @@
                 Payment
             </h2>
         </div>
-        <form id="paymentForm" method="post" action="http://mercury.swin.edu.au/it000000/formtest.php">
+        <form id="paymentForm" method="post" action="http://mercury.swin.edu.au/it000000/formtest.php" novalidate="novalidate">
             <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
             <fieldset class="u-margin-bottom-4">
                 <legend class="heading-third">Your details</legend>
@@ -186,14 +166,10 @@
         </form>
     </section>
     <!-- Finish section -->
-    <footer class="footer u-text-center">
-        <span>
-            <small><a href="mailto:tranmr@gmail.com">Mark up by: Anh Tran</a></small>
-        </span>
-        <span>
-            <small><a href="https://www.swinburne.edu.au">&#169; Swinburne University of Technology</a></small>
-        </span>
-    </footer>
+    <!-- Footer -->
+    <?php 
+        include_once ("includes/footer.inc");
+    ?>
     <!-- Finsih footer -->
 </body>
 

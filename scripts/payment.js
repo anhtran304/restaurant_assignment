@@ -8,7 +8,7 @@
 
 "use strict";
 //Global variables accessible to all functions
-
+var validate = true;
 // Return CSS visibility and display for BankField and AddressField
 function visibilityDisplay(str1, str2) {
     return `visibility: ${str1}; display: ${str2}`;
@@ -268,7 +268,9 @@ function init() {
     
     getStorageDta();
     cancelButton.onclick = cancelPayment;
-    paymentForm.onsubmit = validatePayment;          
+    if (validate) {
+        paymentForm.onsubmit = validatePayment;
+    }
 }
 
 // Window finished load
