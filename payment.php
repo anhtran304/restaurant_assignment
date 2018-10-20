@@ -27,7 +27,7 @@
                 Payment
             </h2>
         </div>
-        <form id="paymentForm" method="post" action="http://mercury.swin.edu.au/it000000/formtest.php" novalidate="novalidate">
+        <form id="paymentForm" method="post" action="process_order.php" novalidate="novalidate">
             <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
             <fieldset class="u-margin-bottom-4">
                 <legend class="heading-third">Your details</legend>
@@ -134,9 +134,9 @@
                 <legend class="heading-third">Payment</legend>
                 <div>
                     <label>Credit card type</label>
-                    <label for="visa"><input type="radio" id="visa" name="creditCard" value="visa"/>Visa</label>
-                    <label for="mastercard"><input type="radio" id="mastercard" name="creditCard" value="mastercard" />Mastercard</label>
-                    <label for="american"><input type="radio" id="american" name="creditCard" value="american" />American Express</label>
+                    <label for="visa"><input type="radio" id="visa" name="cardType" value="visa"/>Visa</label>
+                    <label for="mastercard"><input type="radio" id="mastercard" name="cardType" value="mastercard" />Mastercard</label>
+                    <label for="american"><input type="radio" id="american" name="cardType" value="american" />American Express</label>
                 </div>
                 <div>
                     <label>Name on card</label>

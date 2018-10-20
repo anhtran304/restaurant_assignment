@@ -8,7 +8,7 @@
 
 "use strict";
 //Global variables accessible to all functions
-var validate = false;
+var validate = true;
 
 var formField;
 var recievedAddressField;
@@ -230,84 +230,84 @@ function validateForm() {
     var recievedBankName = document.getElementById("recievedBankName").value;
     var dataDetail, dataAddress, dataAmount, dataReciever, dataRecieverBank;   
 
-    if (isNaN(transferAmount) || transferAmount == 0) { 
-        errMsg += "Please enter a positive transfer amount \n";
-    } 
-    if (isNaN(recievedAmount) || recievedAmount == 0) {
-      errMsg += "Please enter a positive recieved amount \n";
-    } 
-    if (serviceChoice == "banktobank") {
-        if (recievedBankAcount == "") {
-            errMsg += "Please enter recieved bank account.\n";
-        }
-        if (recievedAccountName == "") {
-          errMsg += "Please enter recieved account name.\n";
-        }
-        if (recievedBankName == "") {
-          errMsg += "Please enter recieved bank name.\n";
-        }
-    }
-    if (serviceChoice == "banktohome") {
-        if (recievedName == "") {
-          errMsg += "Please enter reciever name.\n";
-        }
-        if (recievedPhone == "") {
-          errMsg += "Please enter reciever phone number.\n";
-        }
-        if (recievedAddress == "") {
-            errMsg += "Please enter reciever address.\n";
-        }
-        if (recievedCity == "") {
-          errMsg += "Please enter reciever city.\n";
-        }
-    }
+    // if (isNaN(transferAmount) || transferAmount == 0) { 
+    //     errMsg += "Please enter a positive transfer amount \n";
+    // } 
+    // if (isNaN(recievedAmount) || recievedAmount == 0) {
+    //   errMsg += "Please enter a positive recieved amount \n";
+    // } 
+    // if (serviceChoice == "banktobank") {
+    //     if (recievedBankAcount == "") {
+    //         errMsg += "Please enter recieved bank account.\n";
+    //     }
+    //     if (recievedAccountName == "") {
+    //       errMsg += "Please enter recieved account name.\n";
+    //     }
+    //     if (recievedBankName == "") {
+    //       errMsg += "Please enter recieved bank name.\n";
+    //     }
+    // }
+    // if (serviceChoice == "banktohome") {
+    //     if (recievedName == "") {
+    //       errMsg += "Please enter reciever name.\n";
+    //     }
+    //     if (recievedPhone == "") {
+    //       errMsg += "Please enter reciever phone number.\n";
+    //     }
+    //     if (recievedAddress == "") {
+    //         errMsg += "Please enter reciever address.\n";
+    //     }
+    //     if (recievedCity == "") {
+    //       errMsg += "Please enter reciever city.\n";
+    //     }
+    // }
 
-    switch (state) {
-        case "vic":
-            if (!(postcode.toString()[0] == 3) || (postcode.toString()[0] == 8)) {
-                errMsg += "Postcode for VIC must start with 3 or 8\n";
-            }
-            break;
-        case "nsw":
-            if (!(postcode.toString()[0] == 1) || (postcode.toString()[0] == 2)) {
-                errMsg += "Postcode for NSW must start with 1 or 2\n";
-            }
-            break;
-        case "qld":
-            if (!(postcode.toString()[0] == 4) || (postcode.toString()[0] == 9)) {
-                errMsg += "Postcode for QLD must start with 4 or 9\n";
-            }
-            break;
-        case "nt":
-            if (!(postcode.toString()[0] == 0)) {
-                errMsg += "Postcode for NT must start with 0\n";
-            }
-            break;
-        case "wa":
-            if (!(postcode.toString()[0] == 6)) {
-                errMsg += "Postcode for WA must start with 6\n";
-            }
-            break;
-        case "sa":
-            if (!(postcode.toString()[0] == 5)) {
-                errMsg += "Postcode for SA must start with 5\n";
-            }
-            break;
-        case "tas":
-            if (!(postcode.toString()[0] == 7)) {
-                errMsg += "Postcode for TAS must start with 7\n";
-            }
-            break;
-        case "atc":
-            if (!(postcode.toString()[0] == 0)) {
-                errMsg += "Postcode for ATC must start with 0\n";
-            }
-            break;
+    // switch (state) {
+    //     case "vic":
+    //         if (!(postcode.toString()[0] == 3) || (postcode.toString()[0] == 8)) {
+    //             errMsg += "Postcode for VIC must start with 3 or 8\n";
+    //         }
+    //         break;
+    //     case "nsw":
+    //         if (!(postcode.toString()[0] == 1) || (postcode.toString()[0] == 2)) {
+    //             errMsg += "Postcode for NSW must start with 1 or 2\n";
+    //         }
+    //         break;
+    //     case "qld":
+    //         if (!(postcode.toString()[0] == 4) || (postcode.toString()[0] == 9)) {
+    //             errMsg += "Postcode for QLD must start with 4 or 9\n";
+    //         }
+    //         break;
+    //     case "nt":
+    //         if (!(postcode.toString()[0] == 0)) {
+    //             errMsg += "Postcode for NT must start with 0\n";
+    //         }
+    //         break;
+    //     case "wa":
+    //         if (!(postcode.toString()[0] == 6)) {
+    //             errMsg += "Postcode for WA must start with 6\n";
+    //         }
+    //         break;
+    //     case "sa":
+    //         if (!(postcode.toString()[0] == 5)) {
+    //             errMsg += "Postcode for SA must start with 5\n";
+    //         }
+    //         break;
+    //     case "tas":
+    //         if (!(postcode.toString()[0] == 7)) {
+    //             errMsg += "Postcode for TAS must start with 7\n";
+    //         }
+    //         break;
+    //     case "atc":
+    //         if (!(postcode.toString()[0] == 0)) {
+    //             errMsg += "Postcode for ATC must start with 0\n";
+    //         }
+    //         break;
             
     
-        default:
-            break;
-    }
+    //     default:
+    //         break;
+    // }
 
     if (errMsg != "") {
         alert(errMsg);

@@ -8,7 +8,7 @@
 
 "use strict";
 //Global variables accessible to all functions
-var validate = true;
+var validate = false;
 // Return CSS visibility and display for BankField and AddressField
 function visibilityDisplay(str1, str2) {
     return `visibility: ${str1}; display: ${str2}`;
@@ -171,85 +171,85 @@ function validatePayment() {
 
     console.log("Expiry date: ", expiry);
     
-    if (!(isVisa || isMastercard || isAmerican)) {
-      errMsg = errMsg + "Please select Credit Card type\n";
-      result = false;
-    }
-    if (!nameOnCard.match(/^[a-zA-Z\s]+$/)) {
-      errMsg = errMsg + "Name on card must be alpha characters and/or space\n";
-      result = false;
-    }
-    if (nameOnCard.length > 40) {
-      errMsg = errMsg + "Name on card must be no more than 40 characters\n";
-      result = false;
-    }
-    if (!cardNumber.match(/^[0-9]{15,16}$/)) {
-      errMsg = errMsg + "Credit card number must be 15 or 16 digits\n";
-      result = false;
-    }
-    if (!expiryMonth.match(/^[0-9]{2}$/)) {
-      errMsg = errMsg + "Credit card expiry month must be 2 digits\n";
-      result = false;
-    }
-    if ((expiryMonth <= 0) || (expiryMonth >12)) {
-      errMsg = errMsg + "Credit card expiry month must be from 01 to 12\n";
-      result = false;
-    }
+    // if (!(isVisa || isMastercard || isAmerican)) {
+    //   errMsg = errMsg + "Please select Credit Card type\n";
+    //   result = false;
+    // }
+    // if (!nameOnCard.match(/^[a-zA-Z\s]+$/)) {
+    //   errMsg = errMsg + "Name on card must be alpha characters and/or space\n";
+    //   result = false;
+    // }
+    // if (nameOnCard.length > 40) {
+    //   errMsg = errMsg + "Name on card must be no more than 40 characters\n";
+    //   result = false;
+    // }
+    // if (!cardNumber.match(/^[0-9]{15,16}$/)) {
+    //   errMsg = errMsg + "Credit card number must be 15 or 16 digits\n";
+    //   result = false;
+    // }
+    // if (!expiryMonth.match(/^[0-9]{2}$/)) {
+    //   errMsg = errMsg + "Credit card expiry month must be 2 digits\n";
+    //   result = false;
+    // }
+    // if ((expiryMonth <= 0) || (expiryMonth >12)) {
+    //   errMsg = errMsg + "Credit card expiry month must be from 01 to 12\n";
+    //   result = false;
+    // }
 
-    if (!expiryYear.match(/^[0-9]{2}$/)) {
-      errMsg = errMsg + "Credit card expiry year must be 2 digits\n";
-      result = false;
-    }
+    // if (!expiryYear.match(/^[0-9]{2}$/)) {
+    //   errMsg = errMsg + "Credit card expiry year must be 2 digits\n";
+    //   result = false;
+    // }
 
-    if (expiry <= currentTime) {
-        errMsg = errMsg + "Credit card expiry must be after the current time\n";
-        result = false;
-    }
+    // if (expiry <= currentTime) {
+    //     errMsg = errMsg + "Credit card expiry must be after the current time\n";
+    //     result = false;
+    // }
 
-    if (isVisa) {
-        if (!cardNumber.match(/^[0-9]{16}$/)) {
-            errMsg = errMsg + "Visa card number must be 16 digits\n";
-            result = false;
-        }
-        if (cardNumber.toString()[0] != 4) {
-            errMsg = errMsg + "Visa card number must start with 4\n";
-            result = false;
-        }
-        if (!verification.match(/^[0-9]{3}$/)) {
-            errMsg = errMsg + "Visa card verification number must be 3 digits\n";
-            result = false;
-        }
-    }
+    // if (isVisa) {
+    //     if (!cardNumber.match(/^[0-9]{16}$/)) {
+    //         errMsg = errMsg + "Visa card number must be 16 digits\n";
+    //         result = false;
+    //     }
+    //     if (cardNumber.toString()[0] != 4) {
+    //         errMsg = errMsg + "Visa card number must start with 4\n";
+    //         result = false;
+    //     }
+    //     if (!verification.match(/^[0-9]{3}$/)) {
+    //         errMsg = errMsg + "Visa card verification number must be 3 digits\n";
+    //         result = false;
+    //     }
+    // }
 
-    if (isMastercard) {
-        if (!cardNumber.match(/^[0-9]{16}$/)) {
-            errMsg = errMsg + "Master card number must be 16 digits\n";
-            result = false;
-        }
-        if ((cardNumber.toString().slice(0, 2) < 51 || (cardNumber.toString().slice(0, 2) > 55))) {
-            errMsg = errMsg + "Master card number must start with digits 51 through 55\n";
-            result = false;
-        }
-        if (!verification.match(/^[0-9]{3}$/)) {
-            errMsg = errMsg + "Master card verification number must be 3 digits\n";
-            result = false;
-        }
-    }
+    // if (isMastercard) {
+    //     if (!cardNumber.match(/^[0-9]{16}$/)) {
+    //         errMsg = errMsg + "Master card number must be 16 digits\n";
+    //         result = false;
+    //     }
+    //     if ((cardNumber.toString().slice(0, 2) < 51 || (cardNumber.toString().slice(0, 2) > 55))) {
+    //         errMsg = errMsg + "Master card number must start with digits 51 through 55\n";
+    //         result = false;
+    //     }
+    //     if (!verification.match(/^[0-9]{3}$/)) {
+    //         errMsg = errMsg + "Master card verification number must be 3 digits\n";
+    //         result = false;
+    //     }
+    // }
 
-    if (isAmerican) {
-        if (!cardNumber.match(/^[0-9]{15}$/)) {
-            errMsg = errMsg + "American Express card number must be 15 digits\n";
-            result = false;
-        }
-        if (!(cardNumber.toString().slice(0, 2) == 34 || (cardNumber.toString().slice(0, 2) == 37))) {
-            errMsg = errMsg + "American Express card number must start with digits 34 or 37\n";
-            result = false;
-        }
-        if (!verification.match(/^[0-9]{4}$/)) {
-            errMsg = errMsg + "Visa card verification number must be 4 digits\n";
-            result = false;
-        }
-    }
+    // if (isAmerican) {
+    //     if (!cardNumber.match(/^[0-9]{15}$/)) {
+    //         errMsg = errMsg + "American Express card number must be 15 digits\n";
+    //         result = false;
+    //     }
+    //     if (!(cardNumber.toString().slice(0, 2) == 34 || (cardNumber.toString().slice(0, 2) == 37))) {
+    //         errMsg = errMsg + "American Express card number must start with digits 34 or 37\n";
+    //         result = false;
+    //     }
+    //     if (!verification.match(/^[0-9]{4}$/)) {
+    //         errMsg = errMsg + "Visa card verification number must be 4 digits\n";
+    //         result = false;
+    //     }
+    // }
 
     if (errMsg != "") {
         alert(errMsg);
