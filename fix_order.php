@@ -19,16 +19,23 @@
     <!-- Finsih header -->
     <!-- PHP section for GET query string -->
     <?php
+        // Clean up data
+        function sanitise_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
         $result = true;
         if (!isset($_GET["firstname"])) {
         $result = false;
         } else {
-        $firstname = $_GET["firstname"];
+        $firstname = sanitise_input($_GET["firstname"]);
         }
         if (!isset($_GET["lastname"])) {
         $result = false;
         } else {
-        $lastname = $_GET["lastname"];
+        $lastname = sanitise_input($_GET["lastname"]);
         }
         if (!isset($_GET["err_msg"])) {
         $result = false;
@@ -38,102 +45,102 @@
         if (!isset($_GET["phone"])) {
         $result = false;
         } else {
-        $phone = $_GET["phone"];
+        $phone = sanitise_input($_GET["phone"]);
         }
         if (!isset($_GET["email"])) {
         $result = false;
         } else {
-        $email = $_GET["email"];
+        $email = sanitise_input($_GET["email"]);
         }
         if (!isset($_GET["street"])) {
         $result = false;
         } else {
-        $street = utf8_decode(urldecode($_GET["street"]));
+        $street = utf8_decode(urldecode(sanitise_input($_GET["street"])));
         }
         if (!isset($_GET["suburb"])) {
         $result = false;
         } else {
-        $suburb = $_GET["suburb"];
+        $suburb = sanitise_input($_GET["suburb"]);
         }
         if (!isset($_GET["postcode"])) {
         $result = false;
         } else {
-        $postcode = $_GET["postcode"];
+        $postcode = sanitise_input($_GET["postcode"]);
         }
         if (!isset($_GET["transfer_amount"])) {
         $result = false;
         } else {
-        $transfer_amount = $_GET["transfer_amount"];
+        $transfer_amount = sanitise_input($_GET["transfer_amount"]);
         }
         if (!isset($_GET["recieved_amount"])) {
         $result = false;
         } else {
-        $recieved_amount = $_GET["recieved_amount"];
+        $recieved_amount = sanitise_input($_GET["recieved_amount"]);
         }
         if (!isset($_GET["fees"])) {
         $result = false;
         } else {
-        $fees = $_GET["fees"];
+        $fees = sanitise_input($_GET["fees"]);
         }
         if (!isset($_GET["comment"])) {
         $result = false;
         } else {
-        $comment = utf8_decode(urldecode($_GET["comment"]));
+        $comment = utf8_decode(urldecode(sanitise_input($_GET["comment"])));
         }
         if (!isset($_GET["recieved_phone"])) {
         $result = false;
         } else {
-        $recieved_phone = $_GET["recieved_phone"];
+        $recieved_phone = sanitise_input($_GET["recieved_phone"]);
         }
         if (!isset($_GET["recieved_name"])) {
         $result = false;
         } else {
-        $recieved_name = utf8_decode(urldecode($_GET["recieved_name"]));
+        $recieved_name = utf8_decode(urldecode(sanitise_input($_GET["recieved_name"])));
         }
         if (!isset($_GET["recieved_address"])) {
         $result = false;
         } else {
-        $recieved_address = utf8_decode(urldecode($_GET["recieved_address"]));
+        $recieved_address = utf8_decode(urldecode(sanitise_input($_GET["recieved_address"])));
         }
         if (!isset($_GET["recieved_city"])) {
         $result = false;
         } else {
-        $recieved_city = utf8_decode(urldecode($_GET["recieved_city"]));
+        $recieved_city = utf8_decode(urldecode(sanitise_input($_GET["recieved_city"])));
         }
         if (!isset($_GET["recieved_bank_acount"])) {
         $result = false;
         } else {
-        $recieved_bank_acount = $_GET["recieved_bank_acount"];
+        $recieved_bank_acount = sanitise_input($_GET["recieved_bank_acount"]);
         }
         if (!isset($_GET["state"])) {
         $result = false;
         } else {
-        $state = $_GET["state"];
+        $state = sanitise_input($_GET["state"]);
         }
         if (!isset($_GET["country"])) {
         $result = false;
         } else {
-        $country = $_GET["country"];
+        $country = sanitise_input($_GET["country"]);
         }
         if (!isset($_GET["service_choice"])) {
         $result = false;
         } else {
-        $service_choice = $_GET["service_choice"];
+        $service_choice = sanitise_input($_GET["service_choice"]);
         }
         if (!isset($_GET["recieved_city"])) {
         $result = false;
         } else {
-        $recieved_city = utf8_decode(urldecode($_GET["recieved_city"]));
+        $recieved_city = utf8_decode(urldecode(sanitise_input($_GET["recieved_city"])));
         }
         if (!isset($_GET["recieved_account_name"])) {
         $result = false;
         } else {
-        $recieved_account_name = utf8_decode(urldecode($_GET["recieved_account_name"]));
+        $recieved_account_name = utf8_decode(urldecode(sanitise_input($_GET["recieved_account_name"])));
         }
         if (!isset($_GET["recieved_bank_name"])) {
         $result = false;
         } else {
-        $recieved_bank_name = utf8_decode(urldecode($_GET["recieved_bank_name"]));
+        $recieved_bank_name = utf8_decode(urldecode(sanitise_input($_GET["recieved_bank_name"])));
         }
         // Forward to enquire.php if directly access from URL
         if (!$result) {

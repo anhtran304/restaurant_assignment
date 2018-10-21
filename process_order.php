@@ -17,6 +17,29 @@
         $data = htmlspecialchars($data);
         return $data;
     }
+    // Set dafault time zone
+    date_default_timezone_set('Australia/Melbourne');
+    // Load MySQL log in credentials
+    require_once "settings.php";
+    // Log in and use database	
+    $conn = @mysqli_connect($host,$user,$pwd,$sql_db);	
+    // Set up status
+    $status = "PENDING";
+    $err_msg = "";
+    // Get variables
+    $fees = 0;
+
+    $recieved_name = sanitise_input($_POST["recievedName"]);
+    $recieved_phone = sanitise_input($_POST["recievedPhone"]);
+    $recieved_address = sanitise_input($_POST["recievedAddress"]);
+    $recieved_city = sanitise_input($_POST["recievedCity"]);
+
+    $recieved_bank_acount = sanitise_input($_POST["recievedBankAcount"]);
+    $recieved_account_name = sanitise_input($_POST["recievedAccountName"]);
+    $recieved_bank_name = sanitise_input($_POST["recievedBankName"]);
+
+    $verification = sanitise_input($_POST["verification"]);
+
     // Calculating fees 
     function calculate_fees($to_country, $amount) {
         $total_fees = 0;
@@ -62,29 +85,6 @@
         }
         return ($total_fees + $amount);
     }
-    // Set dafault time zone
-    date_default_timezone_set('Australia/Melbourne');
-    // Load MySQL log in credentials
-    require_once "settings.php";
-    // Log in and use database	
-    $conn = mysqli_connect($host,$user,$pwd,$sql_db);	
-    // Set up status
-    $status = "PENDING";
-    $err_msg = "";
-    // Get variables
-    $fees = 0;
-
-    $recieved_name = sanitise_input($_POST["recievedName"]);
-    $recieved_phone = sanitise_input($_POST["recievedPhone"]);
-    $recieved_address = sanitise_input($_POST["recievedAddress"]);
-    $recieved_city = sanitise_input($_POST["recievedCity"]);
-
-    $recieved_bank_acount = sanitise_input($_POST["recievedBankAcount"]);
-    $recieved_account_name = sanitise_input($_POST["recievedAccountName"]);
-    $recieved_bank_name = sanitise_input($_POST["recievedBankName"]);
-
-    $verification = sanitise_input($_POST["verification"]);
-
     // Validate firstname
     if (isset($_POST["firstname"])) {
             $firstname = sanitise_input($_POST["firstname"]);
@@ -157,43 +157,43 @@
             $err_msg .= "<p>Please enter your state.</p>";
         } else {
             switch ($state) {
-                case "vic":
-                    if (!($postcode == 3) || ($postcode == 8)) {
+                case "VIC":
+                    if (!((substr($postcode, 0, 1) == 3) || (substr($postcode, 0, 1) == 8))) {
                         $err_msg .= "<p>Postcode for VIC must start with 3 or 8</p>";
                     }
                     break;
-                case "nsw":
-                    if (!($postcode == 1) || ($postcode == 2)) {
+                case "NSW":
+                    if (!((substr($postcode, 0, 1) == 1) || (substr($postcode, 0, 1) == 2))) {
                         $err_msg .= "<p>Postcode for NSW must start with 1 or 2</p>";
                     }
                     break;
-                case "qld":
-                    if (!($postcode == 4) || ($postcode == 9)) {
+                case "QLD":
+                    if (!((substr($postcode, 0, 1) == 4) || (substr($postcode, 0, 1) == 9))) {
                         $err_msg .= "<p>Postcode for QLD must start with 4 or 9</p>";
                     }
                     break;
-                case "nt":
-                    if (!($postcode == 0)) {
+                case "NT":
+                    if (!(substr($postcode, 0, 1) == 0)) {
                         $err_msg .= "<p>Postcode for NT must start with 0</p>";
                     }
                     break;
-                case "wa":
-                    if (!($postcode == 6)) {
+                case "WA":
+                    if (!(substr($postcode, 0, 1) == 6)) {
                         $err_msg .= "<p>Postcode for WA must start with 6</p>";
                     }
                     break;
-                case "sa":
-                    if (!($postcode == 5)) {
+                case "SA":
+                    if (!(substr($postcode, 0, 1) == 5)) {
                         $err_msg .= "<p>Postcode for SA must start with 5</p>";
                     }
                     break;
-                case "tas":
-                    if (!($postcode == 7)) {
+                case "TAS":
+                    if (!(substr($postcode, 0, 1) == 7)) {
                         $err_msg .= "<p>Postcode for TAS must start with 7</p>";
                     }
                     break;
-                case "atc":
-                    if (!($postcode == 0)) {
+                case "ATC":
+                    if (!(substr($postcode, 0, 1) == 0)) {
                         $err_msg .= "<p>Postcode for ATC must start with 0</p>";
                     }
                     break;
@@ -383,7 +383,7 @@
                                 order_time timestamp, order_cost float, order_status varchar(20), 
                                 firstname varchar(25), lastname varchar(25), phone varchar(12), email varchar(20),
                                 street varchar(30), suburb varchar(10), state varchar(10), postcode int(4),
-                                transfer_amount float, country varchar(10), recieved_amount float, service_choice varchar(10),
+                                transfer_amount float, country varchar(10), recieved_amount float, service_choice varchar(20),
                                 fees float, comment varchar(500), recieved_name varchar(20), recieved_phone varchar(12), 
                                 recieved_address varchar(100), recieved_city varchar(10), recieved_bank_acount varchar(12),
                                 recieved_account_name varchar(20), recieved_bank_name varchar(12),

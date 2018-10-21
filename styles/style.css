@@ -60,7 +60,7 @@ fieldset input[type="radio"] {
 
 table {
   width: 100%;
-  border-collapse: collapse; }
+  margin-left: .5rem; }
   table caption {
     margin-bottom: 1rem; }
   table th, table td {
