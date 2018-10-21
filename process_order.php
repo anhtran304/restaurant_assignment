@@ -3,14 +3,9 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Demonstrates some basic HTML content elements" />
-    <meta name="keywords" content="HTML5, CSS, JavaScript" />
+    <meta name="description" content="Demonstrates Web developing" />
+    <meta name="keywords" content="HTML5, CSS, JavaScript, PHP" />
     <meta name="author" content="Anh Tran" />
-    <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans:100,300,400,700,900" rel="stylesheet" />
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous" /> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="styles/style.css" />
     <title>Swap - Money Transfer | Process Order</title>
 </head>
 <body>
@@ -22,7 +17,7 @@
         $data = htmlspecialchars($data);
         return $data;
     }
-
+    // Calculating fees 
     function calculate_fees($to_country, $amount) {
         $total_fees = 0;
         switch ($to_country) {
@@ -65,17 +60,18 @@
             default:
                 break;
         }
-        return $total_fees;
+        return ($total_fees + $amount);
     }
-
+    // Set dafault time zone
     date_default_timezone_set('Australia/Melbourne');
-    require_once "settings.php";	// Load MySQL log in credentials
-    $conn = mysqli_connect($host,$user,$pwd,$sql_db);	// Log in and use database
+    // Load MySQL log in credentials
+    require_once "settings.php";
+    // Log in and use database	
+    $conn = mysqli_connect($host,$user,$pwd,$sql_db);	
     // Set up status
     $status = "PENDING";
     $err_msg = "";
     // Get variables
-    // $fees = sanitise_input($_POST["fees"]);
     $fees = 0;
 
     $recieved_name = sanitise_input($_POST["recievedName"]);
@@ -228,8 +224,8 @@
             $transfer_amount = sanitise_input($_POST["transferAmount"]);
             if (!(is_numeric($transfer_amount) and $transfer_amount > 0)) { 
                 $err_msg .= "<p>Please enter a positive transfer amount</p>";
-                $fees = calculate_fees($country, $transfer_amount);
             } 
+            $fees = calculate_fees($country, $transfer_amount);
         } else {
             $err_msg .= "<p>Please enter a positive transfer amount</p>";
         }
@@ -368,12 +364,22 @@
     } else {
         $err_msg .= "<p>Please enter Expire month</p>";
     }
-
+    // Check error message if error -> forward to fix_order.php, if not query to database
     if ($err_msg != "") {
-        echo $err_msg;
+        if ($firstname != "") {
+            header('Location: fix_order.php?firstname=' . $firstname . '&lastname=' . $lastname . '&phone=' . $phone . '&email=' . $email .
+                    '&street=' . urlencode($street) . '&suburb=' . $suburb . '&state=' . $state . '&postcode=' . $postcode . '&transfer_amount=' . $transfer_amount . 
+                    '&country=' . $country . '&recieved_amount=' . $recieved_amount . '&service_choice=' . $service_choice . '&fees=' . $fees . '&comment=' . urlencode($comment) .
+                    '&recieved_name=' . urlencode($recieved_name) . '&recieved_phone=' . $recieved_phone . '&recieved_address=' . urlencode($recieved_address) . '&recieved_city=' . urlencode($recieved_city) .
+                    '&recieved_bank_acount=' . $recieved_bank_acount . '&recieved_account_name=' . urlencode($recieved_account_name) . '&recieved_bank_name=' . urlencode($recieved_bank_name) . 
+                    '&err_msg=' . urlencode($err_msg)
+            );
+        } else {
+            header('Location: enquire.php');
+        }
     } else {
         if ($conn) { // check is database is available for use
-            $query = "CREATE TABLE IF NOT EXISTS orders (order_id int(11) unsigned not null auto_increment primary key,
+            $query_create = "CREATE TABLE IF NOT EXISTS orders (order_id int(11) unsigned not null auto_increment primary key,
                                 order_time timestamp, order_cost float, order_status varchar(20), 
                                 firstname varchar(25), lastname varchar(25), phone varchar(12), email varchar(20),
                                 street varchar(30), suburb varchar(10), state varchar(10), postcode int(4),
@@ -384,10 +390,10 @@
                                 card_type varchar(10), name_on_card varchar(20), card_number varchar(20), 
                                 expiry_month int(2), expiry_year int(2), verification int(4)
                                 )";
-            $result = mysqli_query ($conn, $query);
-            if ($result) {								// check if query was successfully executed
+            $result_create = mysqli_query ($conn, $query_create);
+            if ($result_create) {								// check if query was successfully executed
                 $sql_table = "orders";
-                $query = "INSERT INTO 
+                $query_insert = "INSERT INTO 
                             $sql_table(order_cost, order_status, 
                                         firstname, lastname, phone, email, street, suburb, state, postcode,
                                         transfer_amount, country, recieved_amount, service_choice, fees, comment, 
@@ -402,13 +408,33 @@
                                     '$recieved_bank_acount', '$recieved_account_name', '$recieved_bank_name',
                                     '$card_type', '$name_on_card', '$card_number', '$expiry_month', '$expiry_year', '$verification'
                                     )";		// Assign appropriate query here
-                $result = mysqli_query($conn, $query);
-                if (!$result) {
-                    echo "<p>Something is wrong with ", $query, "</p>";
+                $result_insert = mysqli_query($conn, $query_insert);
+                if (!$result_insert) {
+                    echo "<p>Something is wrong with ", $query_insert, "</p>";
                 } else {
-                    echo "<p> Added </p>";
+                    $query_select = "SELECT * FROM $sql_table ORDER BY order_time DESC LIMIT 1"; // Assign appropriate query here
+                    $result_select = mysqli_query($conn, $query_select);
+                    if (!$result_select) {
+                        echo "<p>Something is wrong with ", $result_select, "</p>";
+                    } else {
+                        $record_select = mysqli_fetch_assoc($result_select);
+                        if ($record_select) {
+                            // If record_select is true then forward to receipt.php
+                            header('Location: receipt.php?firstname=' . $firstname . '&lastname=' . $lastname . '&phone=' . $phone . '&email=' . $email .
+                                '&street=' . urlencode($street) . '&suburb=' . $suburb . '&state=' . $state . '&postcode=' . $postcode . '&transfer_amount=' . $transfer_amount . 
+                                '&country=' . $country . '&recieved_amount=' . $recieved_amount . '&service_choice=' . $service_choice . '&fees=' . $fees . '&comment=' . urlencode($comment) .
+                                '&recieved_name=' . urlencode($recieved_name) . '&recieved_phone=' . $recieved_phone . '&recieved_address=' . urlencode($recieved_address) . '&recieved_city=' . urlencode($recieved_city) .
+                                '&recieved_bank_acount=' . $recieved_bank_acount . '&recieved_account_name=' . urlencode($recieved_account_name) . '&recieved_bank_name=' . urlencode($recieved_bank_name) . 
+                                '&err_msg=' . urlencode($err_msg) . '&order_id=' . $record['order_id'] . '&order_status=' . $record['order_status'] .
+                                '&card_type=' . urlencode($card_type) . '&name_on_card=' . urlencode($name_on_card) . '&card_number=' . $card_number . 
+                                '&expiry_month=' . $expiry_month . '&expiry_year=' . $expiry_year . '&verification=' . $verification
+                            ); 
+                            mysqli_free_result ($result_select);	// Free up resources
+                        } else {
+                            echo "<p>No records retrieved.</p>";
+                        }
+                    }
                 }
-                echo "<p>Create table operation successful.</p>";
             } else {
                 echo "<p>Create table operation unsuccessful.</p>";
             }
