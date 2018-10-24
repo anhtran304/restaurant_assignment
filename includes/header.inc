@@ -17,7 +17,7 @@
                 <a href="manager.php">Manager</a>
             </li>
             <li>
-                <a href="enhancements2.php">Enhancements</a>
+                <a href="enhancements3.php">Enhancements</a>
             </li>
             <li>
                 <a href="about.php">About</a>

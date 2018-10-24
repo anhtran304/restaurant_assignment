@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="description" content="Demonstrates Web developing" />
-    <meta name="keywords" content="HTML5, CSS, JavaScript, PHP" />
-    <meta name="author" content="Anh Tran" />
-    <title>Swap - Money Transfer | Process Order</title>
-</head>
-<body>
 <?php
+    /* Author: Anh Tran - 101953626
+    * Target: enquire.php
+    * Purpose: PHP used to process order from 'enquire.php'
+    * Created: 12/09/2018
+    * Last updated: 12/10/2018
+    * Credits: 
+    */
+
     // Clean up data
     function sanitise_input($data) {
         $data = trim($data);
@@ -345,21 +342,22 @@
             $err_msg .= "<p>Expire month must be 2 digits</p>";
         } else if (($expiry_month <= 0) || ($expiry_month > 12)) {
             $err_msg .="<p>Credit card expiry month must be from 01 to 12</p>";
-        } 
-        if (isset($_POST["expiryYear"])) {
-            $expiry_year = sanitise_input($_POST["expiryYear"]);
-            if (!preg_match("/^[0-9]{2}$/", $expiry_year)) {
-                $err_msg .= "<p>Expire Year must be 2 digits</p>";
-            } else {
-                $dateString = "{$expiry_year}-{$expiry_month}";
-                $expiry = DateTime::createFromFormat('y-m', $dateString);
-                $current = date('y-m');
-                if ($expiry <= $current) {
-                    $err_msg .= "<p>Credit card expiry must be after the current time</p>";
-                }
-            }
         } else {
-            $err_msg .= "<p>Please enter Expire Year</p>";
+            if (isset($_POST["expiryYear"])) {
+                $expiry_year = sanitise_input($_POST["expiryYear"]);
+                if (!preg_match("/^[0-9]{2}$/", $expiry_year)) {
+                    $err_msg .= "<p>Expire Year must be 2 digits</p>";
+                } else {
+                    $dateString = '20' . "{$expiry_year}-{$expiry_month}";
+                    $expiry = new DateTime($dateString);
+                    $current = new DateTime();
+                    if ($expiry < $current) {
+                        $err_msg .= "<p>Credit card expiry must be after the current time</p>";
+                    }
+                }
+            } else {
+                $err_msg .= "<p>Please enter Expire Year</p>";
+            }
         }
     } else {
         $err_msg .= "<p>Please enter Expire month</p>";
@@ -379,34 +377,62 @@
         }
     } else {
         if ($conn) { // check is database is available for use
+            // Create customers table 
+            $query_create_customer = "CREATE TABLE IF NOT EXISTS customers (email varchar(20) not null primary key,
+                                        firstname varchar(25), lastname varchar(25), phone varchar(12),
+                                        street varchar(30), suburb varchar(10), state varchar(10), postcode int(4)
+                                        )ENGINE=InnoDB";
+            $result_create_customer = mysqli_query($conn, $query_create_customer);
+            if ($result_create_customer) {
+                // Insert into customers table and IGNORE if email already taken
+                $query_insert_customer = "INSERT IGNORE INTO customers(email, firstname, lastname, phone, street, suburb, state, postcode) 
+                                            VALUES ( '$email', '$firstname', '$lastname', '$phone', '$street', '$suburb', '$state', '$postcode')";
+                $result_insert_customer = mysqli_query($conn, $query_insert_customer);
+            } else {
+                echo "<p>Create customers table operation unsuccessful.</p>";
+            }
+            // Create creadit card table
+            $query_create_cc = "CREATE TABLE IF NOT EXISTS credit_card (card_number varchar(20) not null primary key,
+                                        card_type varchar(10), name_on_card varchar(20), 
+                                        expiry_month int(2), expiry_year int(2), verification int(4)
+                                        )ENGINE=InnoDB";
+            $result_create_cc = mysqli_query($conn, $query_create_cc);
+            if ($result_create_cc) {
+                // Insert into credit card table and IGNORE if card number already taken
+                $query_insert_cc = "INSERT IGNORE INTO credit_card (card_number, card_type, name_on_card, expiry_month, expiry_year, verification) 
+                                            VALUES ( '$card_number', '$card_type', '$name_on_card', '$expiry_month', '$expiry_year', '$verification')";
+                $result_insert_customer = mysqli_query($conn, $query_insert_cc);
+            } else {
+                echo "<p>Create credit_card table operation unsuccessful.</p>";
+            } 
             $query_create = "CREATE TABLE IF NOT EXISTS orders (order_id int(11) unsigned not null auto_increment primary key,
                                 order_time timestamp, order_cost float, order_status varchar(20), 
-                                firstname varchar(25), lastname varchar(25), phone varchar(12), email varchar(20),
-                                street varchar(30), suburb varchar(10), state varchar(10), postcode int(4),
+                                email varchar(20) not null,
                                 transfer_amount float, country varchar(10), recieved_amount float, service_choice varchar(20),
                                 fees float, comment varchar(500), recieved_name varchar(20), recieved_phone varchar(12), 
                                 recieved_address varchar(100), recieved_city varchar(10), recieved_bank_acount varchar(12),
-                                recieved_account_name varchar(20), recieved_bank_name varchar(12),
-                                card_type varchar(10), name_on_card varchar(20), card_number varchar(20), 
-                                expiry_month int(2), expiry_year int(2), verification int(4)
-                                )";
-            $result_create = mysqli_query ($conn, $query_create);
+                                recieved_account_name varchar(20), recieved_bank_name varchar(12), card_number varchar(20),
+                                INDEX (`card_number`),  
+                                FOREIGN Key(`card_number`) REFERENCES credit_card(`card_number`) ON DELETE CASCADE,
+                                INDEX (`email`),  
+                                FOREIGN Key(`email`) REFERENCES customers(`email`) ON DELETE CASCADE
+                                )ENGINE=InnoDB";
+            $result_create = mysqli_query($conn, $query_create);
             if ($result_create) {								// check if query was successfully executed
                 $sql_table = "orders";
                 $query_insert = "INSERT INTO 
                             $sql_table(order_cost, order_status, 
-                                        firstname, lastname, phone, email, street, suburb, state, postcode,
+                                        email,
                                         transfer_amount, country, recieved_amount, service_choice, fees, comment, 
                                         recieved_name, recieved_phone, recieved_address, recieved_city, 
                                         recieved_bank_acount, recieved_account_name, recieved_bank_name,
-                                        card_type, name_on_card, card_number, expiry_month, expiry_year, verification
+                                        card_number
                                         ) 
                             VALUES ('$fees', '$status', 
-                                    '$firstname', '$lastname', '$phone', '$email', '$street', '$suburb', '$state', '$postcode',
+                                    '$email',
                                     '$transfer_amount', '$country', '$recieved_amount', '$service_choice', '$fees', '$comment', 
                                     '$recieved_name', '$recieved_phone', '$recieved_address', '$recieved_city', 
-                                    '$recieved_bank_acount', '$recieved_account_name', '$recieved_bank_name',
-                                    '$card_type', '$name_on_card', '$card_number', '$expiry_month', '$expiry_year', '$verification'
+                                    '$recieved_bank_acount', '$recieved_account_name', '$recieved_bank_name', '$card_number'
                                     )";		// Assign appropriate query here
                 $result_insert = mysqli_query($conn, $query_insert);
                 if (!$result_insert) {
@@ -436,7 +462,7 @@
                     }
                 }
             } else {
-                echo "<p>Create table operation unsuccessful.</p>";
+                echo "<p>Create orders table operation unsuccessful.</p>";
             }
             mysqli_close ($conn);					// Close the database connect
         } else {
@@ -444,6 +470,3 @@
         }
     }
 ?>	
-</body>
-</html>
-

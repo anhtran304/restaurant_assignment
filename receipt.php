@@ -14,6 +14,15 @@
 <body>
     <!-- Header -->
     <?php
+
+    /* Author: Anh Tran - 101953626
+    * Target: enquire.php
+    * Purpose: PHP used to process order from 'enquire.php'
+    * Created: 12/09/2018
+    * Last updated: 12/10/2018
+    * Credits: 
+    */
+
         include_once ("includes/header.inc");
     ?>
     <!-- Finsih header -->
@@ -194,31 +203,30 @@
                 Receipt
             </h2>
         </div>
-        <form id="enquireForm" method="post" action="process_order.php" novalidate="novalidate">
         <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
         <!-- Detail section -->
         <fieldset class="u-margin-bottom-4">
             <legend class="heading-third">Your details</legend>
             <span>
-                <label for="firstname">First Name</label> 
+                <label>First Name</label> 
                 <?php 
                     echo "<label id='firstname'>$firstname</label>";
                 ?>
             </span>
             <span>
-                <label for="lastname">Last Name</label>
+                <label>Last Name</label>
                 <?php 
                     echo "<label id='lastname'>$lastname</label>";
                 ?> 
             </span>
             <span>
-                <label for="phone">Phone</label>
+                <label>Phone</label>
                 <?php 
                     echo "<label id='phone'>$phone</label>";
                 ?>  
             </span>
             <span>
-                <label for="email">Email</label>
+                <label>Email</label>
                 <?php 
                     echo "<label id='email'>$email</label>";
                 ?>   
@@ -228,25 +236,25 @@
         <fieldset class="u-margin-bottom-4">
             <legend class="heading-third">Your address</legend>
             <span>
-                <label for="street">Street</label> 
+                <label>Street</label> 
                 <?php 
                     echo "<label id='street'>$street</label>";
                 ?> 
             </span>
             <span>
-                <label for="suburb">Suburb</label>
+                <label>Suburb</label>
                 <?php 
                     echo "<label id='suburb'>$suburb</label>";
                 ?>  
             </span>
             <span class="section__enquire__select">
-                <label for="state">State</label>
+                <label>State</label>
                 <?php 
                     echo "<label id='state'>$state</label>";
                 ?>            
             </span>
             <span>
-                <label for="postcode">Postcode</label> 
+                <label>Postcode</label> 
                 <?php 
                     echo "<label id='postcode'>$postcode</label>";
                 ?> 
@@ -256,29 +264,29 @@
         <fieldset class="u-margin-bottom-4">
             <legend class="heading-third">Money Transfer</legend>
             <span>
-                <label for="transferAmount">Transfer Amount - AUD</label>
+                <label>Transfer Amount - AUD</label>
                 <?php 
                     echo "<label id='transferAmount'>$transfer_amount</label>";
                 ?> 
             </span>
             <span class="section__enquire__select">
-                <label for="country">Transfer to Country</label>
+                <label>Transfer to Country</label>
                 <?php 
                     echo "<label id='country'>" . ucfirst($country) . "</label>";
                 ?> 
             </span>
             <span>
-                <label id="lable_recievedAmount" for="recievedAmount">Recieved Amount</label>
+                <label>Recieved Amount</label>
                 <?php 
                     echo "<label id='recievedAmount'>$recieved_amount</label>";
                 ?> 
             </span>
             <span>
-                <label id="label_service_choice" for="service_choice">Service choice</label>                
+                <label>Service choice</label>                
                 <?php 
-                    if ($service_choice == 'banktopickup') echo "<label id='transferAmount'>Bank to Pick up</label>";
-                    if ($service_choice == 'banktobank') echo "<label id='transferAmount'>Bank to Bank</label>";
-                    if ($service_choice == 'banktohome') echo "<label id='transferAmount'>Bank to Home</label>";
+                    if ($service_choice == 'banktopickup') echo "<label id='label_banktopickup'>Bank to Pick up</label>";
+                    if ($service_choice == 'banktobank') echo "<label id='label_banktobank'>Bank to Bank</label>";
+                    if ($service_choice == 'banktohome') echo "<label id='label_banktohome'>Bank to Home</label>";
                 ?>
             </span>
             <span>
@@ -296,25 +304,25 @@
             ?>>
             <legend class="heading-third">Reciever details</legend>
             <span>
-                <label for="recievedName">Name</label>
+                <label>Name</label>
                 <?php
                     echo "<label id='recieved_name'>$recieved_name</label>"; 
                 ?> 
             </span>
             <span>
-                <label for="recievedPhone">Phone</label>
+                <label>Phone</label>
                 <?php
                     echo "<label id='recievedPhone'>$recieved_phone</label>";  
                 ?> 
             </span>
             <span>
-                <label for="recievedAddress">Address</label>
+                <label>Address</label>
                 <?php
                     echo "<label id='recievedAddress'>$recieved_address</label>";   
                 ?> 
             </span>
             <span>
-                <label for="recievedCity">City</label>
+                <label>City</label>
                 <?php
                     echo "<label id='recievedCity'>$recieved_city</label>";    
                 ?> 
@@ -328,19 +336,19 @@
             ?>>
             <legend class="heading-third">Reciever Bank details</legend>
             <span>
-                <label for="recievedBankAcount">Account Number</label>
+                <label>Account Number</label>
                 <?php
                     echo "<label id='recievedBankAcount'>$recieved_bank_acount</label>";     
                 ?> 
             </span>
             <span>
-                <label for="recievedAccountName">Account Name</label>
+                <label>Account Name</label>
                 <?php
                     echo "<label id='recievedAccountName'>$recieved_account_name</label>";      
                 ?> 
             </span>
             <span>
-                <label for="recievedBankName">Bank Name</label>
+                <label>Bank Name</label>
                 <?php
                     echo "<label id='recievedBankName'>$recieved_bank_name</label>";       
                 ?> 
@@ -350,7 +358,7 @@
         <fieldset class="u-margin-bottom-4">
             <legend class="heading-third">Notes</legend>
             <span>
-                <label for="comments">Comments</label> 
+                <label>Comments</label> 
                 <?php
                     echo "<label id='comments'>$comment</label>";        
                 ?> 
@@ -398,11 +406,6 @@
                 ?> 
             </div>
         </fieldset>
-        <p class="u-margin-bottom-4 u-text-center display-flex">
-            <input id="submitButton" class="btn btn__bold btn__success u-margin-right-2" type="submit" value="Transfer Now"/>
-            <input class="btn" type="reset" value="Reset"/>
-        </p>
-        </form>
     </section>
     <!-- Finish section -->
     <!-- Footer -->

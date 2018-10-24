@@ -8,7 +8,7 @@
 
 "use strict";
 //Global variables accessible to all functions
-var validate = true;
+var validate = false;
 
 var formField;
 var recievedAddressField;
@@ -415,7 +415,7 @@ function init() {
     feesField = document.getElementById("fees");
 
     formField = document.getElementById("enquireForm");
-    if (validate) {
+    if (!validate) {
         formField.onsubmit = validateForm;
     }
 }

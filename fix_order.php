@@ -14,6 +14,13 @@
 <body>
     <!-- Header -->
     <?php
+    /* Author: Anh Tran - 101953626
+    * Target: enquire.php
+    * Purpose: PHP used to process order from 'enquire.php'
+    * Created: 12/09/2018
+    * Last updated: 12/10/2018
+    * Credits: 
+    */
         include_once ("includes/header.inc");
     ?>
     <!-- Finsih header -->

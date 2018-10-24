@@ -32,7 +32,6 @@
         require_once "settings.php";
         // Log in and use database	
         $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
-        $sql_table="orders";
         $err_msg = "";
 
         if (!isset($_POST["firstname"])) {
@@ -64,13 +63,13 @@
         if (isset($_GET["order_id"])) {
             $order_id = sanitise_input($_GET["order_id"]);
         } else {
-            $order_id = 0;
+            $order_id = 0; // order_id = 0 means no order_id
         }
         // GET action value: 0-delete, 1-update
         if (isset($_GET["action"])) {
             $action = sanitise_input($_GET["action"]);
         } else {
-            $action = 2;
+            $action = 2; // action = 2 - Do NOTHING
         }
         // Save edit_order_status
         if (!isset($_POST["edit_order_status"])) {
@@ -83,7 +82,7 @@
         } else {
             $edit_order_id = sanitise_input($_POST["edit_order_id"]);
             if ($conn) { // check is database is available for use
-                $query = "UPDATE $sql_table SET order_status= '$edit_order_status' WHERE order_id = '$edit_order_id'";
+                $query = "UPDATE orders SET order_status= '$edit_order_status' WHERE order_id = '$edit_order_id'";
                 $result = mysqli_query ($conn, $query);
             if ($result) {								
                 $err_msg .= "<p>Update operation successful</p>";
@@ -98,7 +97,7 @@
         if ($action == 0) {
             if ($order_id != 0) {
                 if ($conn) { // check is database is available for use
-                    $query = "DELETE FROM $sql_table WHERE order_id = '$order_id' and order_status = 'PENDING'";
+                    $query = "DELETE FROM orders WHERE order_id = '$order_id' and order_status = 'PENDING'";
                     $result = mysqli_query ($conn, $query);
                 if ($result) {								// check if query was successfully executed
                     $err_msg .= "<p>" . mysqli_affected_rows($conn) . " record deleted. </p>";
@@ -109,6 +108,12 @@
                     $err_msg .= "<p>Unable to connect to the database.</p>";
                 }
             }
+        }
+        // GET sort by click heading
+        if (!isset($_GET["sort"])) {
+            $sort = "";
+        } else {
+            $sort = sanitise_input($_GET["sort"]);
         }
     ?>	
     <!-- Finish PHP section for GET query string -->
@@ -177,14 +182,14 @@
             <table>
                 <thead>
                     <tr>
-                        <th scope="col">Order ID</th>
-                        <th scope="col">Order Time</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Transfer</th>
-                        <th scope="col">Recieved</th>
-                        <th scope="col">Total Cost</th>
-                        <th scope="col">Customer Name</th>
-                        <th scope="col">Status</th>
+                        <th><a href="manager.php?sort=order_id">Order ID</a></th>
+                        <th><a href="manager.php?sort=order_time">Order Time</a></th>
+                        <th><a href="manager.php?sort=service_choice">Product</a></th>
+                        <th><a href="manager.php?sort=transfer_amount">Transfer</a></th>
+                        <th><a href="manager.php?sort=recieved_amount">Recieved</a></th>
+                        <th><a href="manager.php?sort=order_cost">Total Cost</a></th>
+                        <th><a href="manager.php?sort=firstname">Customer Name</a></th>
+                        <th><a href="manager.php?sort=order_status">Status</a></th>
                         <th scope="col">Delete</th>
                         <th scope="col">Update</th>
                     </tr>
@@ -194,30 +199,30 @@
                         if (!$conn) {
                             $err_msg .= "<p>Database connection failure</p>";
                         } else {
-                            echo $order_status;
-                            $query_search = "SELECT * FROM $sql_table WHERE firstname like '%$firstname%' and lastname like '%$lastname%'";
-                            if ($order_status != "") {
-                                $query_search = "SELECT * FROM $sql_table WHERE firstname like '%$firstname%' and lastname like '%$lastname%' and order_status = '$order_status'";		// Assign appropriate query here                                
-                            }                                
-                            if ($service_choice != "") {
-                                $query_search = "SELECT * FROM $sql_table WHERE firstname like '%$firstname%' and lastname like '%$lastname%' 
-                                                and service_choice = '$service_choice'";			// Assign appropriate query here
-                                if ($order_status != "") { 
-                                    $query_search = "SELECT * FROM $sql_table WHERE firstname like '%$firstname%' and lastname like '%$lastname%' 
-                                                and service_choice = '$service_choice' and order_status = '$order_status'";			// Assign appropriate query here                        
-                                }
-                            }                            
-                            if ($order_cost == 1) {
-                                $query_search = "SELECT * FROM $sql_table WHERE firstname like '%$firstname%' and lastname like '%$lastname%' ORDER BY order_cost DESC";		// Assign appropriate query here                                
+                            if ($sort == "") {
+                                $query_search = "SELECT * FROM customers INNER JOIN orders ON customers.email = orders.email WHERE firstname like '%$firstname%' and lastname like '%$lastname%'";
+                                if ($order_status != "") {
+                                    $query_search .=  "and order_status = '$order_status'";		// Assign appropriate query here                                
+                                }                                
                                 if ($service_choice != "") {
-                                    $query_search = "SELECT * FROM $sql_table WHERE firstname like '%$firstname%' and lastname like '%$lastname%' 
-                                                    and service_choice = '$service_choice' ORDER BY order_cost DESC";			// Assign appropriate query here
+                                    $query_search .=  "and service_choice = '$service_choice'";			// Assign appropriate query here
                                     if ($order_status != "") { 
-                                        $query_search = "SELECT * FROM $sql_table WHERE firstname like '%$firstname%' and lastname like '%$lastname%' 
-                                                    and service_choice = '$service_choice' and order_status = '$order_status' ORDER BY order_cost DESC";			// Assign appropriate query here                                }
+                                        $query_search .= "and service_choice = '$service_choice' and order_status = '$order_status'";			// Assign appropriate query here                        
+                                    }
+                                }                            
+                                if ($order_cost == 1) {
+                                    $query_search .= "ORDER BY order_cost DESC";		// Assign appropriate query here                                
+                                    if ($service_choice != "") {
+                                        $query_search .= "and service_choice = '$service_choice' ORDER BY order_cost DESC";			// Assign appropriate query here
+                                        if ($order_status != "") { 
+                                            $query_search .= "and service_choice = '$service_choice' and order_status = '$order_status' ORDER BY order_cost DESC";			// Assign appropriate query here                                }
+                                        }
                                     }
                                 }
-                            }  
+                            } else {
+                                $query_search = "SELECT * FROM customers INNER JOIN orders ON customers.email = orders.email ORDER BY $sort";
+                            } 
+
                             $result_search = mysqli_query($conn, $query_search);
                             if (!$result_search) {
                                 $err_msg .= "<p>Something is wrong with " . $query_search . "</p>";
@@ -234,7 +239,6 @@
                                     if ($action == 1) {
                                         if ($order_id == $row['order_id']) {
                                             echo "<td>", "<select name='edit_order_status' id='edit_order_status'>
-                                                <option value=''>Select status</option>
                                                 <option value='PENDING' selected='selected'>PENDING</option>
                                                 <option value='FULFILLED'>FULFILLED</option>
                                                 <option value='PAID'>PAID</option>
@@ -252,10 +256,12 @@
                             }
                             mysqli_close($conn);					// Close the database connect
                         }
-                        echo "<input type='hidden' name='edit_order_id' value='$order_id'/>";
-                    ?>
+                        ?>
                 </tbody>
             </table>
+                <?php
+                echo "<input type='hidden' name='edit_order_id' value='$order_id'/>";
+                ?>
             <p class="u-margin-bottom-4 u-text-center"
                 <?php 
                     if (($action == 1) && ($order_id != 0)) echo 'style="visibility: visible; display: block;"'; 

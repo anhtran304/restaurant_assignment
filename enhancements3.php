@@ -22,29 +22,29 @@
     <section class="section__enquire">
         <div class="u-text-center u-margin-bottom-4">
             <h2 class="heading-secondary heading-border u-margin-bottom-4">
-                Fetching data live
+                Separate Customers Table
             </h2>
             <div class="u-margin-bottom-4">
-                <p class="u-margin-bottom-4">Fetching data live from outernal source by JavaScript Promise as below. Using in: <a href="enquire.html">Enquire.html</a></p>
-                <img class="fetching" src="images/fetching.png" alt="Fetching Image" />
+                <p class="u-margin-bottom-4">Seperate Customers Table. Using in: <a href="enquire.php">Enquire.php</a></p>
+                <img class="fetching" src="images/customers_table.png" alt="Customers Table" />
             </div>
         </div>
         <div class="u-text-center u-margin-bottom-4">
             <h2 class="heading-secondary heading-border u-margin-bottom-4">
-                Data two-way binding
+                Separate Credit Card table
             </h2>
             <p class="u-margin-bottom-4">
-                I built a Data two-way binding by adding two function to handle the transfer amount input and recieved amount input. When the input have onchange event, it will trigger the handle function and update the other field in update function. Using in: <a href="enquire.html">Enquire.html</a>
-                <img class="binding" src="images/binding.png" alt="Binding Image" />
+                Separate Credit Card table. Using in: <a href="enquire.php">Enquire.php</a>
+                <img class="binding" src="images/credit_card.png" alt="Credit Card Table" />
             </p>
         </div>
         <div class="u-text-center u-margin-bottom-4">
             <h2 class="heading-secondary heading-border u-margin-bottom-4">
-                Store JSON data into session storage
+                Sort by heading
             </h2>
             <p class="u-margin-bottom-4">
-                I used JSON.stringify tp change JSON into string then store it into session storage. When retrieving data from session storage, I used JSON.parse to parse string back to JSON data. By doing that, I can store more data and easier to use it as a parameters. Using in: <a href="enquire.html">Enquire.html</a>
-                <img class="json" src="images/JSON.png" alt="JSON Image" />
+                Sort table by click into heading. Using in: <a href="manager.php">Manager.php</a>
+                <img class="json" src="images/sort.png" alt="Sort" />
             </p>
         </div>
     </section>
