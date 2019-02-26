@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8"/>
+            <meta name="description" content="Demonstrates Web developing"/>
+                <meta name="keywords" content="HTML5, CSS, JavaScript, PHP"/>
+                    <meta name="author" content="Anh Tran"/>
+                        <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans:100,300,400,700,900" rel="stylesheet"/>
+                            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+                                <link rel="stylesheet" href="styles/style.css"/>
+                                    <title>Swap - Money Transfer | Fix Order</title>
+                                    <!-- <script src="scripts/fix_order.js"></script> -->
+                                </head>
+                                <body>
+                                    <!-- Header -->
+                                    <header class="header">
+                                        <div class="header__logo-box">
+                                            <img class="header__logo" src="images/logo.png" alt="Logo"/>
+                                            </div>
+                                            <nav>
+                                                <ul>
+                                                    <li>
+                                                        <a href="index.php">Home</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="product.php">Products</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="enquire.php">Enquire</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="manager.php">Manager</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="enhancements3.php">Enhancements</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="about.php">About</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </header>                                        <!-- Finsih header -->
+                                        <!-- PHP section for GET query string -->
+
+                                        <!-- Finish PHP section for GET query string -->
+                                        <!-- Section in HTML with PHP echo depend on values -->
+                                        <section class="section__enquire">
+                                            <div class="u-text-center u-margin-bottom-4">
+                                                <h2 class="heading-secondary heading-border">
+                Fix Order
+                                                </h2>
+                                            </div>
+                                            <!-- Error section -->
+                                            <fieldset class="u-margin-bottom-4">
+                                                <legend class="heading-third">Errors</legend>
+                                                <div class="error-message">
+                                                    <p>Only letters are allowed in last name.</p>
+                                                    <p>Email is not valid.</p>
+                                                    <p>Phone number should be 10 digits.</p>
+                                                    <p>Please enter your street.</p>
+                                                    <p>Please enter your suburb.</p>
+                                                    <p>Postcode should be 4 digits</p>
+                                                    <p>Please enter your state.</p>
+                                                    <p>Card number must be 15 or 16 digits</p>
+                                                    <p>Please select Credit Card type</p>
+                                                    <p>Name on card must be alpha characters and/or space</p>
+                                                    <p>Expire month must be 2 digits</p>
+                                                </div>
+                                            </fieldset>
+                                            <form id="enquireForm" method="post" action="process_order.php" novalidate="novalidate">
+                                                <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
+                                                <!-- Detail section -->
+                                                <fieldset class="u-margin-bottom-4">
+                                                    <legend class="heading-third">Your details</legend>
+                                                    <span>
+                                                        <label for="firstname">First Name</label>
+                                                        <input name="firstname" id="firstname" value="Anh" type="text"/></span>
+                                                        <span>
+                                                            <label for="lastname">Last Name</label>
+                                                            <input name="lastname" id="lastname" value="" type="text"/>
+                                                            </span>
+                                                            <span>
+                                                                <label for="phone">Phone</label>
+                                                                <input name="phone" id="phone" value="" type="text"/>
+                                                                </span>
+                                                                <span>
+                                                                    <label for="email">Email</label>
+                                                                    <input name="email" id="email" value="" type="text"/>
+                                                                    </span>
+                                                                </fieldset>
+                                                                <!-- Address section -->
+                                                                <fieldset class="u-margin-bottom-4">
+                                                                    <legend class="heading-third">Your address</legend>
+                                                                    <span>
+                                                                        <label for="street">Street</label>
+                                                                        <input name="street" id="street" value="" type="text"/>
+                                                                        </span>
+                                                                        <span>
+                                                                            <label for="suburb">Suburb</label>
+                                                                            <input name="suburb" id="suburb" value="" type="text"/>
+                                                                            </span>
+                                                                            <span class="section__enquire__select">
+                                                                                <label for="state">State</label>
+                                                                                <select name="state" id="state" required="required">
+                                                                                    <option value="">Please Select</option>
+                                                                                    <option value="nsw">NSW</option>
+                                                                                    <option value="vic">VIC</option>
+                                                                                    <option value="atc">ATC</option>
+                                                                                    <option value="qld">QLD</option>
+                                                                                    <option value="sa">SA</option>
+                                                                                    <option value="wa">WA</option>
+                                                                                    <option value="nt">NT</option>
+                                                                                    <option value="tas">TAS</option>
+                                                                                </select>
+                                                                            </span>
+                                                                            <span>
+                                                                                <label for="postcode">Postcode</label>
+                                                                                <input name="postcode" id="postcode" value="" type="text"/>
+                                                                                </span>
+                                                                            </fieldset>
+                                                                            <!-- Transfer amount section -->
+                                                                            <fieldset class="u-margin-bottom-4">
+                                                                                <legend class="heading-third">Money Transfer</legend>
+                                                                                <span>
+                                                                                    <label for="transferAmount">Transfer Amount - AUD</label>
+                                                                                    <input name="transferAmount" id="transferAmount" value="1000" type="text"/>
+                                                                                    </span>
+                                                                                    <span class="section__enquire__select">
+                                                                                        <label for="country">Transfer to Country</label>
+                                                                                        <select name="country" id="country" required="required">
+                                                                                            <option value="">Select country</option>
+                                                                                            <option value="vietnam" selected="selected">Vietnam</option>
+                                                                                            <option value="canada">Canada</option>
+                                                                                            <option value="india">India</option>
+                                                                                            <option value="uk">UK</option>
+                                                                                        </select>
+                                                                                    </span>
+                                                                                    <span>
+                                                                                        <label id="lable_recievedAmount" for="recievedAmount">Recieved Amount</label>
+                                                                                        <input name="recievedAmount" id="recievedAmount" value="16525974.03" type="text"/>
+                                                                                        </span>
+                                                                                        <span>
+                                                                                            <label for="banktopickup">
+                                                                                                <input id="banktopickup" name="serviceChoice" value="banktopickup" checked="checked" type="radio"/>Bank to Pick up</label>
+                                                                                                <label for="banktobank">
+                                                                                                    <input id="banktobank" name="serviceChoice" value="banktobank" type="radio"/>Bank to Bank</label>
+                                                                                                    <label for="banktohome">
+                                                                                                        <input id="banktohome" name="serviceChoice" value="banktohome" type="radio"/>Bank to Home</label>
+                                                                                                    </span>
+                                                                                                    <span>
+                                                                                                        <label>Total pay - AUD</label>
+                                                                                                        <label id="fees">1006</label>
+                                                                                                    </span>
+                                                                                                </fieldset>
+                                                                                                <!-- Reciever banktohome section -->
+                                                                                                <fieldset id="recievedAddressField" class="u-margin-bottom-4" style="visibility: hidden; display: none;">
+                                                                                                    <legend class="heading-third">Reciever details</legend>
+                                                                                                    <span>
+                                                                                                        <label for="recievedName">Name</label>
+                                                                                                        <input name="recievedName" id="recievedName" value="" type="text"/>
+                                                                                                        </span>
+                                                                                                        <span>
+                                                                                                            <label for="recievedPhone">Phone</label>
+                                                                                                            <input name="recievedPhone" id="recievedPhone" value="" type="text"/>
+                                                                                                            </span>
+                                                                                                            <span>
+                                                                                                                <label for="recievedAddress">Address</label>
+                                                                                                                <input name="recievedAddress" id="recievedAddress" value="" type="text"/>
+                                                                                                                </span>
+                                                                                                                <span>
+                                                                                                                    <label for="recievedCity">City</label>
+                                                                                                                    <input name="recievedCity" id="recievedCity" value="" type="text"/>
+                                                                                                                    </span>
+                                                                                                                </fieldset>
+                                                                                                                <!-- Reciever banktobank section -->
+                                                                                                                <fieldset id="recievedBankField" class="u-margin-bottom-4" style="visibility: hidden; display: none;">
+                                                                                                                    <legend class="heading-third">Reciever Bank details</legend>
+                                                                                                                    <span>
+                                                                                                                        <label for="recievedBankAcount">Account Number</label>
+                                                                                                                        <input name="recievedBankAcount" id="recievedBankAcount" value="" type="text"/>
+                                                                                                                        </span>
+                                                                                                                        <span>
+                                                                                                                            <label for="recievedAccountName">Account Name</label>
+                                                                                                                            <input name="recievedAccountName" id="recievedAccountName" value="" type="text"/>
+                                                                                                                            </span>
+                                                                                                                            <span>
+                                                                                                                                <label for="recievedBankName">Bank Name</label>
+                                                                                                                                <input name="recievedBankName" id="recievedBankName" value="" type="text"/>
+                                                                                                                                </span>
+                                                                                                                            </fieldset>
+                                                                                                                            <!-- Comment section -->
+                                                                                                                            <fieldset class="u-margin-bottom-4">
+                                                                                                                                <legend class="heading-third">Notes</legend>
+                                                                                                                                <span>
+                                                                                                                                    <label for="comments">Comments</label>
+                                                                                                                                    <textarea id="comments" name="comments" rows="6" cols="40"></textarea>
+                                                                                                                                </span>
+                                                                                                                            </fieldset>
+                                                                                                                            <!-- Credit Card section -->
+                                                                                                                            <fieldset id="payment" class="u-margin-bottom-4">
+                                                                                                                                <legend class="heading-third">Payment</legend>
+                                                                                                                                <div>
+                                                                                                                                    <label>Credit card type</label>
+                                                                                                                                    <label for="visa">
+                                                                                                                                        <input id="visa" name="cardType" value="visa" type="radio"/>Visa</label>
+                                                                                                                                        <label for="mastercard">
+                                                                                                                                            <input id="mastercard" name="cardType" value="mastercard" type="radio"/>Mastercard</label>
+                                                                                                                                            <label for="american">
+                                                                                                                                                <input id="american" name="cardType" value="american" type="radio"/>American Express</label>
+                                                                                                                                            </div>
+                                                                                                                                            <div>
+                                                                                                                                                <label>Name on card</label>
+                                                                                                                                                <input name="nameOnCard" id="nameOnCard" type="text"/>
+                                                                                                                                                </div>
+                                                                                                                                                <div>
+                                                                                                                                                    <label>Card Number</label>
+                                                                                                                                                    <input name="cardNumber" id="cardNumber" type="text"/>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div>
+                                                                                                                                                        <label>Expiry Month - MM</label>
+                                                                                                                                                        <input name="expiryMonth" id="expiryMonth" type="text"/>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div>
+                                                                                                                                                            <label>Expiry Year - YY</label>
+                                                                                                                                                            <input name="expiryYear" id="expiryYear" type="text"/>
+                                                                                                                                                            </div>
+                                                                                                                                                            <div>
+                                                                                                                                                                <label>Verification Value (CVV)</label>
+                                                                                                                                                                <input name="verification" id="verification" type="text"/>
+                                                                                                                                                                </div>
+                                                                                                                                                            </fieldset>
+                                                                                                                                                            <p class="u-margin-bottom-4 u-text-center display-flex">
+                                                                                                                                                                <input id="submitButton" class="btn btn__bold btn__success u-margin-right-2" value="Transfer Now" type="submit"/>
+                                                                                                                                                                    <input class="btn" value="Reset" type="reset"/>
+                                                                                                                                                                    </p>
+                                                                                                                                                                </form>
+                                                                                                                                                            </section>
+                                                                                                                                                            <!-- Finish section -->
+                                                                                                                                                            <!-- Footer -->
+                                                                                                                                                            <footer class="footer u-text-center">
+                                                                                                                                                                <span>
+                                                                                                                                                                    <small>
+                                                                                                                                                                        <a href="mailto:tranmr@gmail.com">Mark up by: Anh Tran</a>
+                                                                                                                                                                    </small>
+                                                                                                                                                                </span>
+                                                                                                                                                                <span>
+                                                                                                                                                                    <small>
+                                                                                                                                                                        <a href="https://www.swinburne.edu.au">© Swinburne University of Technology</a>
+                                                                                                                                                                    </small>
+                                                                                                                                                                </span>
+                                                                                                                                                            </footer>                                                                                                                                                            <!-- Finsih footer -->
+
+                                                                                                                                                        </body>
+                                                                                                                                                    </html>

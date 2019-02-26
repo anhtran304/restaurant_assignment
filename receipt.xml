@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Demonstrates Web developing"/>
+    <meta name="keywords" content="HTML5, CSS, JavaScript, PHP"/>
+    <meta name="author" content="Anh Tran"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans:100,300,400,700,900" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="styles/style.css"/>
+    <title>Swap - Money Transfer | Receipt</title>
+    <!-- <script src="scripts/fix_order.js"></script> -->
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__logo-box">
+            <img class="header__logo" src="images/logo.png" alt="Logo"/>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.php">Home</a>
+                </li>
+                <li>
+                    <a href="product.php">Products</a>
+                </li>
+                <li>
+                    <a href="enquire.php">Enquire</a>
+                </li>
+                <li>
+                    <a href="manager.php">Manager</a>
+                </li>
+                <li>
+                    <a href="enhancements3.php">Enhancements</a>
+                </li>
+                <li>
+                    <a href="about.php">About</a>
+                </li>
+            </ul>
+        </nav>
+    </header> <!-- Finsih header -->
+    <!-- PHP section for GET query string -->
+
+    <!-- Finish PHP section for GET query string -->
+    <!-- Section in HTML with PHP echo depend on values -->
+    <section class="section__enquire">
+        <div class="u-text-center u-margin-bottom-4">
+            <h2 class="heading-secondary heading-border">
+                Receipt
+            </h2>
+        </div>
+        <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
+        <!-- Detail section -->
+        <fieldset class="u-margin-bottom-4">
+            <legend class="heading-third">Your details</legend>
+            <span>
+                <label>First Name</label>
+                <label id="firstname">Back</label> </span>
+            <span>
+                <label>Last Name</label>
+                <label id="lastname">Theory</label>
+            </span>
+            <span>
+                <label>Phone</label>
+                <label id="phone">0433341308</label>
+            </span>
+            <span>
+                <label>Email</label>
+                <label id="email">back@gmail.com</label>
+            </span>
+        </fieldset>
+        <!-- Address section -->
+        <fieldset class="u-margin-bottom-4">
+            <legend class="heading-third">Your address</legend>
+            <span>
+                <label>Street</label>
+                <label id="street">12 Burwood Rd</label>
+            </span>
+            <span>
+                <label>Suburb</label>
+                <label id="suburb">Hawthorn</label>
+            </span>
+            <span class="section__enquire__select">
+                <label>State</label>
+                <label id="state">VIC</label>
+            </span>
+            <span>
+                <label>Postcode</label>
+                <label id="postcode">3122</label>
+            </span>
+        </fieldset>
+        <!-- Transfer amount section -->
+        <fieldset class="u-margin-bottom-4">
+            <legend class="heading-third">Money Transfer</legend>
+            <span>
+                <label>Transfer Amount - AUD</label>
+                <label id="transferAmount">2000</label>
+            </span>
+            <span class="section__enquire__select">
+                <label>Transfer to Country</label>
+                <label id="country">Vietnam</label>
+            </span>
+            <span>
+                <label>Recieved Amount</label>
+                <label id="recievedAmount">33101087.12</label>
+            </span>
+            <span>
+                <label>Service choice</label>
+                <label id="label_banktopickup">Bank to Pick up</label> </span>
+            <span>
+                <label>Total pay - AUD</label>
+                <label id="fees">2013</label>
+            </span>
+        </fieldset>
+        <!-- Reciever banktohome section -->
+        <fieldset id="recievedAddressField" class="u-margin-bottom-4" style="visibility: hidden; display: none;">
+            <legend class="heading-third">Reciever details</legend>
+            <span>
+                <label>Name</label>
+                <label id="recieved_name"></label>
+            </span>
+            <span>
+                <label>Phone</label>
+                <label id="recievedPhone"></label>
+            </span>
+            <span>
+                <label>Address</label>
+                <label id="recievedAddress"></label>
+            </span>
+            <span>
+                <label>City</label>
+                <label id="recievedCity"></label>
+            </span>
+        </fieldset>
+        <!-- Reciever banktobank section -->
+        <fieldset id="recievedBankField" class="u-margin-bottom-4" style="visibility: hidden; display: none;">
+            <legend class="heading-third">Reciever Bank details</legend>
+            <span>
+                <label>Account Number</label>
+                <label id="recievedBankAcount"></label>
+            </span>
+            <span>
+                <label>Account Name</label>
+                <label id="recievedAccountName"></label>
+            </span>
+            <span>
+                <label>Bank Name</label>
+                <label id="recievedBankName"></label>
+            </span>
+        </fieldset>
+        <!-- Comment section -->
+        <fieldset class="u-margin-bottom-4">
+            <legend class="heading-third">Notes</legend>
+            <span>
+                <label>Comments</label>
+                <label id="comments">Gifts</label>
+            </span>
+        </fieldset>
+        <!-- Credit Card section -->
+        <fieldset id="payment" class="u-margin-bottom-4">
+            <legend class="heading-third">Payment</legend>
+            <div>
+                <label>Credit card type</label>
+                <label id="visa">Visa</label> </div>
+            <div>
+                <label>Name on card</label>
+                <label id="nameOnCard">Back Theory</label>
+            </div>
+            <div>
+                <label>Card Number</label>
+                <label id="cardNumber">*************545</label>
+            </div>
+            <div>
+                <label>Expiry Month - MM</label>
+                <label id="expiryMonth">12</label>
+            </div>
+            <div>
+                <label>Expiry Year - YY</label>
+                <label id="expiryYear">20</label>
+            </div>
+            <div>
+                <label>Verification Value (CVV)</label>
+                <label id="verification">743</label>
+            </div>
+        </fieldset>
+    </section>
+    <!-- Finish section -->
+    <!-- Footer -->
+    <footer class="footer u-text-center">
+        <span>
+            <small><a href="mailto:tranmr@gmail.com">Mark up by: Anh Tran</a></small>
+        </span>
+        <span>
+            <small><a href="https://www.swinburne.edu.au">© Swinburne University of Technology</a></small>
+        </span>
+    </footer> <!-- Finsih footer -->
+
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Demonstrates Web developing"/>
+    <meta name="keywords" content="HTML5, CSS, JavaScript, PHP"/>
+    <meta name="author" content="Anh Tran"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato%7COpen+Sans:100,300,400,700,900" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="styles/style.css"/>
+    <title>Swap - Money Transfer | Manager</title>
+    <!-- <script src="scripts/fix_order.js"></script> -->
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__logo-box">
+            <img class="header__logo" src="images/logo.png" alt="Logo"/>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.php">Home</a>
+                </li>
+                <li>
+                    <a href="product.php">Products</a>
+                </li>
+                <li>
+                    <a href="enquire.php">Enquire</a>
+                </li>
+                <li>
+                    <a href="manager.php">Manager</a>
+                </li>
+                <li>
+                    <a href="enhancements3.php">Enhancements</a>
+                </li>
+                <li>
+                    <a href="about.php">About</a>
+                </li>
+            </ul>
+        </nav>
+    </header> <!-- Finsih header -->
+    <!-- PHP section for GET query string -->
+
+    <!-- Finish PHP section for GET query string -->
+    <!-- Section in HTML with PHP echo depend on values -->
+    <section class="section__enquire">
+        <div class="u-text-center u-margin-bottom-4">
+            <h2 class="heading-secondary heading-border">
+                Managers Order
+            </h2>
+        </div>
+        <fieldset class="u-margin-bottom-4">
+            <legend class="heading-third">Alert</legend>
+            <div class="error-message"></div>
+        </fieldset>
+        <form id="managerForm" method="post" action="manager.php" novalidate="novalidate">
+            <!--Note we have to use a special escape character to print an apostrophe on the Web page -->
+            <!-- Filter section -->
+            <fieldset class="u-margin-bottom-4">
+                <legend class="heading-third">Filter</legend>
+                <span>
+                    <label for="firstname">First Name</label>
+                    <input name="firstname" id="firstname" type="text"/>
+                </span>
+                <span>
+                    <label for="lastname">Last Name</label>
+                    <input name="lastname" id="lastname" type="text"/>
+                </span>
+                <span>
+                    <label for="serviceChoice">Product</label>
+                    <select name="serviceChoice" id="serviceChoice">
+                        <option value="">Select product</option>
+                        <option value="banktopickup">Bank to Pick Up</option>
+                        <option value="banktobank">Bank to Bank</option>
+                        <option value="banktohome">Bank to Home</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="order_status">Order status</label>
+                    <select name="order_status" id="order_status">
+                        <option value="">Select status</option>
+                        <option value="PENDING">PENDING</option>
+                        <option value="FULFILLED">FULFILLED</option>
+                        <option value="PAID">PAID</option>
+                        <option value="ARCHIVED">ARCHIVED</option>
+                    </select>
+                </span>
+                <span>
+                    <label for="order_cost">Sorted by Total Cost</label>
+                    <select name="order_cost" id="order_cost">
+                        <option value="0">No</option>
+                        <option value="1">YES</option>
+                    </select>
+                </span>
+                <p class="u-margin-bottom-4 u-text-center">
+                    <input id="submitButton" class="btn btn__bold btn__success u-margin-right-2" value="Search" type="submit"/>
+                    <input class="btn" value="Reset" type="reset"/>
+                </p>
+            </fieldset>
+        </form>
+        <!-- Display section -->
+        <form id="editForm" method="post" action="manager.php" novalidate="novalidate">
+            <fieldset class="u-margin-bottom-4">
+                <legend class="heading-third">Result</legend>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><a href="manager.php?sort=order_id">Order ID</a></th>
+                            <th><a href="manager.php?sort=order_time">Order Time</a></th>
+                            <th><a href="manager.php?sort=service_choice">Product</a></th>
+                            <th><a href="manager.php?sort=transfer_amount">Transfer</a></th>
+                            <th><a href="manager.php?sort=recieved_amount">Recieved</a></th>
+                            <th><a href="manager.php?sort=order_cost">Total Cost</a></th>
+                            <th><a href="manager.php?sort=firstname">Customer Name</a></th>
+                            <th><a href="manager.php?sort=order_status">Status</a></th>
+                            <th scope="col">Delete</th>
+                            <th scope="col">Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2018-10-24 21:50:36</td>
+                            <td>banktopickup</td>
+                            <td>1000</td>
+                            <td>16575300</td>
+                            <td>1006</td>
+                            <td>Test Smith</td>
+                            <td>PAID</td>
+                            <td><a href="manager.php?action=0&amp;order_id=1">Delete</a></td>
+                            <td><a href="manager.php?action=1&amp;order_id=1">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2018-10-24 00:08:35</td>
+                            <td>banktohome</td>
+                            <td>1000</td>
+                            <td>16575300</td>
+                            <td>1008</td>
+                            <td>Test Smith</td>
+                            <td>PENDING</td>
+                            <td><a href="manager.php?action=0&amp;order_id=2">Delete</a></td>
+                            <td><a href="manager.php?action=1&amp;order_id=2">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>2018-10-24 00:55:25</td>
+                            <td>banktopickup</td>
+                            <td>1000</td>
+                            <td>16507000</td>
+                            <td>1006</td>
+                            <td>Anh Tran</td>
+                            <td>FULFILLED</td>
+                            <td><a href="manager.php?action=0&amp;order_id=7">Delete</a></td>
+                            <td><a href="manager.php?action=1&amp;order_id=7">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>2018-10-24 00:55:34</td>
+                            <td>banktopickup</td>
+                            <td>1000</td>
+                            <td>16507000</td>
+                            <td>1006</td>
+                            <td>Anh Tran</td>
+                            <td>ARCHIVED</td>
+                            <td><a href="manager.php?action=0&amp;order_id=8">Delete</a></td>
+                            <td><a href="manager.php?action=1&amp;order_id=8">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>2018-10-24 00:42:31</td>
+                            <td>banktopickup</td>
+                            <td>1000</td>
+                            <td>16507000</td>
+                            <td>1006</td>
+                            <td>Anh Tran</td>
+                            <td>PENDING</td>
+                            <td><a href="manager.php?action=0&amp;order_id=9">Delete</a></td>
+                            <td><a href="manager.php?action=1&amp;order_id=9">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>2018-10-24 21:59:00</td>
+                            <td>banktobank</td>
+                            <td>2000</td>
+                            <td>1097.9</td>
+                            <td>2011</td>
+                            <td>David Hayat</td>
+                            <td>PENDING</td>
+                            <td><a href="manager.php?action=0&amp;order_id=10">Delete</a></td>
+                            <td><a href="manager.php?action=1&amp;order_id=10">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>2018-10-25 12:28:07</td>
+                            <td>banktohome</td>
+                            <td>3000</td>
+                            <td>155314</td>
+                            <td>3010</td>
+                            <td>Nikey Harley</td>
+                            <td>FULFILLED</td>
+                            <td><a href="manager.php?action=0&amp;order_id=11">Delete</a></td>
+                            <td><a href="manager.php?action=1&amp;order_id=11">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input name="edit_order_id" value="0" type="hidden"/>
+                <p class="u-margin-bottom-4 u-text-center" style="visibility: hidden; display: none;">
+                    <input id="saveButton" class="btn btn__bold btn__success u-margin-right-2" value="Save" type="submit"/>
+                </p>
+            </fieldset>
+        </form>
+    </section>
+    <!-- Finish section -->
+    <!-- Footer -->
+    <footer class="footer u-text-center">
+        <span>
+            <small><a href="mailto:tranmr@gmail.com">Mark up by: Anh Tran</a></small>
+        </span>
+        <span>
+            <small><a href="https://www.swinburne.edu.au">© Swinburne University of Technology</a></small>
+        </span>
+    </footer> <!-- Finsih footer -->
+
+</body>
+
+</html>
